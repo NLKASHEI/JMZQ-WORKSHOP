@@ -1,0 +1,12 @@
+[
+  {
+    "comment": "[jmzq_ext:example.weather-story] 暴雨求生",
+    "content": "暴雨环境下强调失温、视野、积水、道路和声音传播的连续影响。",
+    "enabled": false,
+    "constant": true,
+    "selective": false,
+    "key": [],
+    "keysecondary": []
+  }
+]
+

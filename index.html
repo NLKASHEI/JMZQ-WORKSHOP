@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>缄默之秋创意工坊</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">JMZQ WORKSHOP</p>
+      <h1>缄默之秋创意工坊</h1>
+      <p class="subtitle">制作兼容扩展或深度改造包。所有编辑都在本机浏览器完成。</p>
+    </div>
+    <div class="top-actions">
+      <label class="button ghost">导入作品包<input id="package-import" type="file" accept=".json,.jmzqpack.json" hidden></label>
+      <button id="save-draft" class="button ghost" type="button">保存草稿</button>
+      <button id="export-package" class="button primary" type="button">导出作品包</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <nav class="steps" aria-label="编辑步骤">
+      <button class="step active" data-panel="basic" type="button"><b>01</b><span>基本信息</span></button>
+      <button class="step" data-panel="worldbook" type="button"><b>02</b><span>世界书</span></button>
+      <button class="step" data-panel="bindings" type="button"><b>03</b><span>变量关联</span></button>
+      <button class="step" data-panel="deep" type="button"><b>04</b><span>深度改造</span></button>
+      <button class="step" data-panel="publish" type="button"><b>05</b><span>检查与投稿</span></button>
+    </nav>
+
+    <section class="panel active" data-panel-name="basic">
+      <div class="panel-heading">
+        <div><span class="index">01</span><h2>作品基本信息</h2></div>
+        <p>作品 ID 发布后不要修改，它同时是 MVU 私有数据的命名空间。</p>
+      </div>
+      <div class="type-grid">
+        <label class="type-card selected">
+          <input type="radio" name="kind" value="compatible" checked>
+          <strong>兼容扩展</strong>
+          <span>新增世界书条目，并用声明式条件连接原版变量。支持一键安装、更新和卸载。</span>
+        </label>
+        <label class="type-card danger">
+          <input type="radio" name="kind" value="deep">
+          <strong>深度改造</strong>
+          <span>替换 ZOD、状态栏、正则或核心脚本。提供文件、版本要求和人工安装说明。</span>
+        </label>
+      </div>
+      <div class="form-grid">
+        <label>作品名称<input id="name" maxlength="80" placeholder="例如：极寒求生扩展"></label>
+        <label>作品 ID<input id="id" maxlength="64" placeholder="作者名.作品名"></label>
+        <label>版本<input id="version" value="1.0.0" placeholder="1.0.0"></label>
+        <label>作者<input id="author" maxlength="80" placeholder="你的昵称"></label>
+        <label>最低宿主协议<input id="minimum-host" value="1" readonly></label>
+        <label class="wide">简介<textarea id="summary" maxlength="300" rows="4" placeholder="向玩家说明这个扩展增加了什么。"></textarea></label>
+      </div>
+    </section>
+
+    <section class="panel" data-panel-name="worldbook">
+      <div class="panel-heading">
+        <div><span class="index">02</span><h2>世界书条目</h2></div>
+        <div class="inline-actions">
+          <label class="button ghost">导入世界书<input id="worldbook-import" type="file" accept=".json" hidden></label>
+          <button id="namespace-entries" class="button ghost" type="button">补全命名空间</button>
+          <button id="add-entry" class="button primary" type="button">新增条目</button>
+        </div>
+      </div>
+      <div class="split-view">
+        <aside>
+          <div id="entry-list" class="entry-list empty">尚未添加条目</div>
+        </aside>
+        <div id="entry-editor" class="editor-card muted-card">
+          <p>选择或新增一个世界书条目后在这里编辑。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-panel-name="bindings">
+      <div class="panel-heading">
+        <div><span class="index">03</span><h2>变量关联</h2></div>
+        <p>条件只读取 MVU，不执行任意代码。没有条件的条目使用默认启用状态。</p>
+      </div>
+      <div class="binding-layout">
+        <label>目标条目<select id="binding-entry"></select></label>
+        <label>组合方式<select id="binding-mode"><option value="all">全部满足</option><option value="any">任一满足</option></select></label>
+        <button id="add-condition" class="button primary" type="button">添加条件</button>
+      </div>
+      <div id="condition-list" class="condition-list empty">当前条目没有变量条件</div>
+      <div class="test-box">
+        <div>
+          <h3>即时试算</h3>
+          <p>粘贴一份 `stat_data`，查看哪些扩展条目会启用。</p>
+        </div>
+        <textarea id="test-data" rows="9" spellcheck="false">{
+  "世界阶段": "末世期",
+  "环境": { "天气": "终年暴雨" }
+}</textarea>
+        <button id="run-test" class="button ghost" type="button">运行试算</button>
+        <pre id="test-result">等待试算</pre>
+      </div>
+    </section>
+
+    <section class="panel" data-panel-name="deep">
+      <div class="panel-heading">
+        <div><span class="index">04</span><h2>深度改造材料</h2></div>
+        <p>兼容扩展不需要填写。选择深度改造时，此页内容会进入安装指导包。</p>
+      </div>
+      <fieldset>
+        <legend>会替换哪些组件</legend>
+        <div id="replace-options" class="check-grid">
+          <label><input type="checkbox" value="zod">ZOD</label>
+          <label><input type="checkbox" value="statusbar">状态栏</label>
+          <label><input type="checkbox" value="regex">正则</label>
+          <label><input type="checkbox" value="helper">小助手</label>
+          <label><input type="checkbox" value="worldbook">世界书</label>
+          <label><input type="checkbox" value="character-creator">角色创建</label>
+        </div>
+      </fieldset>
+      <label>适配的本体版本<input id="base-version" placeholder="例如：3.2"></label>
+      <label>安装说明<textarea id="install-guide" rows="10" placeholder="逐项说明需要替换什么、导入什么，以及安装顺序。"></textarea></label>
+      <label class="button ghost file-button">添加改造文件<input id="deep-files" type="file" multiple hidden></label>
+      <div id="deep-file-list" class="file-list empty">尚未添加文件</div>
+    </section>
+
+    <section class="panel" data-panel-name="publish">
+      <div class="panel-heading">
+        <div><span class="index">05</span><h2>检查与投稿</h2></div>
+        <p>投稿前先导出作品包。当前入口使用 GitHub，不需要创意工坊服务器。</p>
+      </div>
+      <div id="validation-result" class="validation neutral">尚未检查</div>
+      <div class="publish-actions">
+        <button id="validate-package" class="button ghost" type="button">检查作品</button>
+        <button id="publish-export" class="button primary" type="button">导出作品包</button>
+        <button id="open-submission" class="button accent" type="button">打开投稿入口</button>
+      </div>
+      <p class="submission-note">打开投稿页后，把刚导出的 `.jmzqpack.json` 文件拖入投稿正文即可。审核通过前不会进入小助手目录。</p>
+      <details>
+        <summary>查看生成的注册表预览</summary>
+        <pre id="registry-preview"></pre>
+      </details>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="src/editor.js"></script>
+</body>
+</html>
+

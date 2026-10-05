@@ -1,0 +1,54 @@
+name: 创意工坊作品投稿
+description: 提交由编辑器导出的兼容扩展或深度改造包
+title: "[投稿] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先使用创意工坊编辑器完成检查并导出 `.jmzqpack.json`。把文件拖入下方说明框，审核通过前作品不会进入公开目录。
+  - type: input
+    id: package_id
+    attributes:
+      label: 作品 ID
+      placeholder: author.extension-name
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 作品类型
+      options:
+        - 兼容扩展
+        - 深度改造
+    validations:
+      required: true
+  - type: textarea
+    id: package_file
+    attributes:
+      label: 作品包
+      description: 将导出的 .jmzqpack.json 文件拖入此处上传。
+    validations:
+      required: true
+  - type: textarea
+    id: test_notes
+    attributes:
+      label: 测试说明
+      description: 说明使用的本体版本、测试过的功能，以及已知问题。
+    validations:
+      required: true
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: 投稿确认
+      options:
+        - label: 我确认拥有投稿内容的发布权，并已如实声明修改范围。
+          required: true
+

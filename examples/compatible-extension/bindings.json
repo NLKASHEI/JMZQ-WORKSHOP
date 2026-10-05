@@ -1,0 +1,24 @@
+{
+  "protocolVersion": 1,
+  "entries": [
+    {
+      "name": "[jmzq_ext:example.weather-story] 暴雨求生",
+      "enabledByDefault": false,
+      "activeWhen": {
+        "all": [
+          {
+            "path": ["世界阶段"],
+            "operator": "in",
+            "value": ["爆发期", "末世期"]
+          },
+          {
+            "path": ["环境", "天气"],
+            "operator": "contains",
+            "value": "暴雨"
+          }
+        ]
+      }
+    }
+  ]
+}
+

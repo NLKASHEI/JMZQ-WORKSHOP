@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/NLKASHEI/JMZQ-WORKSHOP/schemas/bindings.schema.json",
+  "title": "兼容扩展变量绑定",
+  "$defs": {
+    "leaf": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "operator"],
+      "properties": {
+        "path": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "operator": {
+          "enum": ["eq", "neq", "gt", "gte", "lt", "lte", "in", "not_in", "contains", "starts_with", "ends_with", "exists", "truthy", "falsy"]
+        },
+        "value": true
+      }
+    },
+    "condition": {
+      "oneOf": [
+        { "$ref": "#/$defs/leaf" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["all"],
+          "properties": { "all": { "type": "array", "items": { "$ref": "#/$defs/condition" } } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["any"],
+          "properties": { "any": { "type": "array", "items": { "$ref": "#/$defs/condition" } } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["not"],
+          "properties": { "not": { "$ref": "#/$defs/condition" } }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocolVersion", "entries"],
+  "properties": {
+    "protocolVersion": { "const": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "enabledByDefault": { "type": "boolean" },
+          "activeWhen": { "$ref": "#/$defs/condition" }
+        }
+      }
+    }
+  }
+}
+

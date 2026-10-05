@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/NLKASHEI/JMZQ-WORKSHOP/schemas/manifest.schema.json",
+  "title": "缄默之秋创意工坊作品清单",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "id", "name", "version", "author", "summary"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "enum": ["compatible", "deep"] },
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+    "author": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 300 },
+    "minimumHostVersion": { "type": "string" },
+    "baseVersion": { "type": "string" },
+    "worldbook": { "type": "string" },
+    "bindings": { "type": "string" },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "readVariables": {
+          "type": "array",
+          "items": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "uniqueItems": true
+        },
+        "writeOwnState": { "type": "boolean" }
+      }
+    },
+    "installGuide": { "type": "string" },
+    "replaces": {
+      "type": "array",
+      "items": { "enum": ["zod", "statusbar", "regex", "helper", "worldbook", "character-creator"] },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "compatible" } } },
+      "then": { "required": ["worldbook", "bindings", "permissions"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "deep" } } },
+      "then": { "required": ["installGuide", "replaces"] }
+    }
+  ]
+}

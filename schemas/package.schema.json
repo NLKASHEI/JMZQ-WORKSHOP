@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/NLKASHEI/JMZQ-WORKSHOP/schemas/package.schema.json",
+  "title": "缄默之秋创意工坊导出包",
+  "type": "object",
+  "required": ["format", "schemaVersion", "manifest"],
+  "properties": {
+    "format": { "const": "jmzq-workshop-package" },
+    "schemaVersion": { "const": 1 },
+    "exportedAt": { "type": "string" },
+    "manifest": { "$ref": "manifest.schema.json" },
+    "worldbook": { "type": "array", "items": { "type": "object" } },
+    "bindings": { "$ref": "bindings.schema.json" },
+    "installGuide": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "size", "sha256", "base64"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "size": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "base64": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "compatible",
+  "id": "example.weather-story",
+  "name": "天气故事示例",
+  "version": "1.0.0",
+  "author": "JMZQ Workshop",
+  "summary": "演示如何根据原版天气和世界阶段启用扩展世界书条目。",
+  "minimumHostVersion": "1",
+  "worldbook": "worldbook.json",
+  "bindings": "bindings.json",
+  "permissions": {
+    "readVariables": [
+      ["世界阶段"],
+      ["环境", "天气"]
+    ],
+    "writeOwnState": false
+  }
+}
+
