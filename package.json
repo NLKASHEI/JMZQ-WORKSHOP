@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:zod-catalog": "node scripts/build-zod-catalog.cjs",
     "test": "node --test tests/*.test.mjs"
   }
 }
-

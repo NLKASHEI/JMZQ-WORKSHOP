@@ -1,0 +1,4491 @@
+{
+  "generatedFrom": "缄默之秋3.0/MVU变量/ZOD.js",
+  "sourceSha256": "67526c7622287ce716217e335b19bc46f730508c47f13d378d3945b2055475fd",
+  "generatedAt": "2026-10-05T05:52:45.527Z",
+  "fieldCount": 340,
+  "fields": [
+    {
+      "path": [
+        "操作请求"
+      ],
+      "label": "操作请求",
+      "group": "操作请求",
+      "description": "状态栏与正文/MVU之间的临时操作握手队列",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "参数"
+      ],
+      "label": "操作请求 › {名称} › 参数",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "参数",
+        "{名称}"
+      ],
+      "label": "操作请求 › {名称} › 参数 › {名称}",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "unknown"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "类型"
+      ],
+      "label": "操作请求 › {名称} › 类型",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "剧情行动",
+        "研究",
+        "制造",
+        "建造",
+        "维修",
+        "拆除",
+        "人员变更",
+        "任务变更",
+        "营地经营",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "说明"
+      ],
+      "label": "操作请求 › {名称} › 说明",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "提交时间"
+      ],
+      "label": "操作请求 › {名称} › 提交时间",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "行动"
+      ],
+      "label": "操作请求 › {名称} › 行动",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "操作请求",
+        "{名称}",
+        "状态"
+      ],
+      "label": "操作请求 › {名称} › 状态",
+      "group": "操作请求",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "待处理",
+        "已接受",
+        "已拒绝",
+        "已完成",
+        "已取消"
+      ]
+    },
+    {
+      "path": [
+        "超事件",
+        "结果"
+      ],
+      "label": "超事件 › 结果",
+      "group": "超事件",
+      "description": "超事件最终结果",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "超事件",
+        "进展"
+      ],
+      "label": "超事件 › 进展",
+      "group": "超事件",
+      "description": "超事件整体进展；仅由剧情实际推进，0~100",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "超事件",
+        "事件ID"
+      ],
+      "label": "超事件 › 事件ID",
+      "group": "超事件",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "超事件",
+        "已解决"
+      ],
+      "label": "超事件 › 已解决",
+      "group": "超事件",
+      "description": "正文明确完成解决条件后才设为true",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "当前活动"
+      ],
+      "label": "当前活动",
+      "group": "当前活动",
+      "description": "当前真正参与结算的机制标签；每轮按正文整体replace此短数组",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "队友"
+      ],
+      "label": "队友",
+      "group": "队友",
+      "description": "同行队友完整记录",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "abilities"
+      ],
+      "label": "队友 › {队友名} › abilities",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "age"
+      ],
+      "label": "队友 › {队友名} › age",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "aliases"
+      ],
+      "label": "队友 › {队友名} › aliases",
+      "group": "队友",
+      "description": "同一人物的英文名、外文名、别名与代号；不得因此建立第二份人物记录",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "appearance"
+      ],
+      "label": "队友 › {队友名} › appearance",
+      "group": "队友",
+      "description": "可观察的体貌、衣着、神态、伤痕与辨识特征，建议60~140字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "background"
+      ],
+      "label": "队友 › {队友名} › background",
+      "group": "队友",
+      "description": "角色当前已知的身份、经历与关系背景，建议100~220字，不写角色尚未知的秘密",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "current_goal"
+      ],
+      "label": "队友 › {队友名} › current_goal",
+      "group": "队友",
+      "description": "角色眼下的诉求、顾虑和正在推动的目标，建议40~100字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "detail"
+      ],
+      "label": "队友 › {队友名} › detail",
+      "group": "队友",
+      "description": "人物综合描述；记录言行气质、关系变化、近期经历和可持续扮演的细节，建议120~260字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "equipment"
+      ],
+      "label": "队友 › {队友名} › equipment",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "favor"
+      ],
+      "label": "队友 › {队友名} › favor",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "gender"
+      ],
+      "label": "队友 › {队友名} › gender",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "男",
+        "女",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "hp"
+      ],
+      "label": "队友 › {队友名} › hp",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "mp"
+      ],
+      "label": "队友 › {队友名} › mp",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "personality"
+      ],
+      "label": "队友 › {队友名} › personality",
+      "group": "队友",
+      "description": "稳定性格、习惯、底线与压力下的行为倾向，建议60~140字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "A"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › A",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "C"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › C",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "E"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › E",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "I"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › I",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "L"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › L",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "P"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › P",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "SPECIAL",
+        "S"
+      ],
+      "label": "队友 › {队友名} › SPECIAL › S",
+      "group": "队友",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "status"
+      ],
+      "label": "队友 › {队友名} › status",
+      "group": "队友",
+      "description": "当前身体、处境与行动状态，建议40~100字，避免只写正常、存活等空泛短词",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "队友",
+        "{队友名}",
+        "thoughts"
+      ],
+      "label": "队友 › {队友名} › thoughts",
+      "group": "队友",
+      "description": "角色此刻真实而具体的想法、判断与情绪，建议60~140字，不用一句模板化态度敷衍",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "感染者行为模式"
+      ],
+      "label": "感染者行为模式",
+      "group": "感染者行为模式",
+      "description": "感染者行为模式：普通型=保留部分本能可诱导，狂病型=完全丧失理智极度攻击性",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "普通型",
+        "狂病型"
+      ]
+    },
+    {
+      "path": [
+        "各大洲",
+        "africa"
+      ],
+      "label": "各大洲 › africa",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "各大洲",
+        "asia"
+      ],
+      "label": "各大洲 › asia",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "各大洲",
+        "europe"
+      ],
+      "label": "各大洲 › europe",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "各大洲",
+        "namerica"
+      ],
+      "label": "各大洲 › namerica",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "各大洲",
+        "oceania"
+      ],
+      "label": "各大洲 › oceania",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "各大洲",
+        "samerica"
+      ],
+      "label": "各大洲 › samerica",
+      "group": "各大洲",
+      "description": "",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "工坊扩展"
+      ],
+      "label": "工坊扩展",
+      "group": "工坊扩展",
+      "description": "创意工坊兼容扩展状态；键为扩展作品ID，各扩展只能写入自己的数据命名空间",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "工坊扩展",
+        "{作品ID}",
+        "版本"
+      ],
+      "label": "工坊扩展 › {作品ID} › 版本",
+      "group": "工坊扩展",
+      "description": "最后安装或迁移到的扩展版本",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "工坊扩展",
+        "{作品ID}",
+        "启用"
+      ],
+      "label": "工坊扩展 › {作品ID} › 启用",
+      "group": "工坊扩展",
+      "description": "玩家是否启用此兼容扩展；关闭时保留数据但停止条目路由",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "工坊扩展",
+        "{作品ID}",
+        "数据"
+      ],
+      "label": "工坊扩展 › {作品ID} › 数据",
+      "group": "工坊扩展",
+      "description": "扩展私有运行态；字段由对应扩展定义",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "工坊扩展",
+        "{作品ID}",
+        "数据",
+        "{名称}"
+      ],
+      "label": "工坊扩展 › {作品ID} › 数据 › {名称}",
+      "group": "工坊扩展",
+      "description": "",
+      "dynamic": true,
+      "type": "unknown"
+    },
+    {
+      "path": [
+        "公共通讯"
+      ],
+      "label": "公共通讯",
+      "group": "公共通讯",
+      "description": "公共频道消息完整记录；清理策略由更新规则负责",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "公共通讯",
+        "{名称}",
+        "content"
+      ],
+      "label": "公共通讯 › {名称} › content",
+      "group": "公共通讯",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "公共通讯",
+        "{名称}",
+        "sender"
+      ],
+      "label": "公共通讯 › {名称} › sender",
+      "group": "公共通讯",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "公共通讯",
+        "{名称}",
+        "time"
+      ],
+      "label": "公共通讯 › {名称} › time",
+      "group": "公共通讯",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hp_current"
+      ],
+      "label": "核心状态 › hp_current",
+      "group": "核心状态",
+      "description": "当前生命值",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hp_max"
+      ],
+      "label": "核心状态 › hp_max",
+      "group": "核心状态",
+      "description": "最大生命值，基础100+每点E×5",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hunger_current"
+      ],
+      "label": "核心状态 › hunger_current",
+      "group": "核心状态",
+      "description": "当前饱食度",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hunger_max"
+      ],
+      "label": "核心状态 › hunger_max",
+      "group": "核心状态",
+      "description": "最大饱食度",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "infection_current"
+      ],
+      "label": "核心状态 › infection_current",
+      "group": "核心状态",
+      "description": "当前感染值，≥60危险",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "infection_max"
+      ],
+      "label": "核心状态 › infection_max",
+      "group": "核心状态",
+      "description": "最大感染值",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "morale_current"
+      ],
+      "label": "核心状态 › morale_current",
+      "group": "核心状态",
+      "description": "当前情绪值",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "morale_max"
+      ],
+      "label": "核心状态 › morale_max",
+      "group": "核心状态",
+      "description": "最大情绪值，基础100+每点L×5",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "stamina_current"
+      ],
+      "label": "核心状态 › stamina_current",
+      "group": "核心状态",
+      "description": "当前体力值",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "stamina_max"
+      ],
+      "label": "核心状态 › stamina_max",
+      "group": "核心状态",
+      "description": "最大体力值，基础100+每点E×5",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "thirst_current"
+      ],
+      "label": "核心状态 › thirst_current",
+      "group": "核心状态",
+      "description": "当前饱水度",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "核心状态",
+        "thirst_max"
+      ],
+      "label": "核心状态 › thirst_max",
+      "group": "核心状态",
+      "description": "最大饱水度",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "环境",
+        "时间"
+      ],
+      "label": "环境 › 时间",
+      "group": "环境",
+      "description": "当前游戏内时间",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "环境",
+        "天气"
+      ],
+      "label": "环境 › 天气",
+      "group": "环境",
+      "description": "当前天气状况",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "环境",
+        "comfort"
+      ],
+      "label": "环境 › comfort",
+      "group": "环境",
+      "description": "休息环境舒适度0-100",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "环境",
+        "hatred"
+      ],
+      "label": "环境 › hatred",
+      "group": "环境",
+      "description": "世界仇恨值0-100",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "环境",
+        "location"
+      ],
+      "label": "环境 › location",
+      "group": "环境",
+      "description": "当前地点",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "环境",
+        "noise"
+      ],
+      "label": "环境 › noise",
+      "group": "环境",
+      "description": "周围动静",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "环境",
+        "radiation"
+      ],
+      "label": "环境 › radiation",
+      "group": "环境",
+      "description": "辐射指数0-100，≥20警告≥50危险",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "环境",
+        "temperature"
+      ],
+      "label": "环境 › temperature",
+      "group": "环境",
+      "description": "体感温度",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "环境",
+        "threat_level"
+      ],
+      "label": "环境 › threat_level",
+      "group": "环境",
+      "description": "威胁等级评估",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "技能"
+      ],
+      "label": "技能",
+      "group": "技能",
+      "description": "已习得技能，等级1-5；每项必须同时保留具体能力描述",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "技能",
+        "{名称}",
+        "desc"
+      ],
+      "label": "技能 › {名称} › desc",
+      "group": "技能",
+      "description": "技能的掌握范围、熟练表现、短板与实际经验；新增或实质成长时建议60~140字，不能只写等级",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "技能",
+        "{名称}",
+        "level"
+      ],
+      "label": "技能 › {名称} › level",
+      "group": "技能",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "建筑"
+      ],
+      "label": "建筑",
+      "group": "建筑",
+      "description": "个人庇护所；与营地功能建筑职责分离",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "capacity"
+      ],
+      "label": "建筑 › {名称} › capacity",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "condition"
+      ],
+      "label": "建筑 › {名称} › condition",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "defense"
+      ],
+      "label": "建筑 › {名称} › defense",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "desc"
+      ],
+      "label": "建筑 › {名称} › desc",
+      "group": "建筑",
+      "description": "庇护所的结构、格局、氛围、可用空间与当前生活痕迹，需保留足够细节",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "facilities"
+      ],
+      "label": "建筑 › {名称} › facilities",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "location"
+      ],
+      "label": "建筑 › {名称} › location",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "power"
+      ],
+      "label": "建筑 › {名称} › power",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "status"
+      ],
+      "label": "建筑 › {名称} › status",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "完好",
+        "轻微损坏",
+        "中度损坏",
+        "严重损坏",
+        "损毁",
+        "建设中"
+      ]
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "storage"
+      ],
+      "label": "建筑 › {名称} › storage",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "storage",
+        "{名称}"
+      ],
+      "label": "建筑 › {名称} › storage › {名称}",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "union"
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "type"
+      ],
+      "label": "建筑 › {名称} › type",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "固定住宅",
+        "地下设施",
+        "工业据点",
+        "军事设施",
+        "临时据点",
+        "水上据点",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "建筑",
+        "{名称}",
+        "water"
+      ],
+      "label": "建筑 › {名称} › water",
+      "group": "建筑",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "金手指",
+        "临时增幅"
+      ],
+      "label": "金手指 › 临时增幅",
+      "group": "金手指",
+      "description": "当前生效的临时增幅；同时只允许一项，过期清理",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "金手指",
+        "已觉醒"
+      ],
+      "label": "金手指 › 已觉醒",
+      "group": "金手指",
+      "description": "质形重构是否已觉醒；由创角页或剧情开启",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "A"
+      ],
+      "label": "金手指 › 永久增幅记录 › A",
+      "group": "金手指",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "E"
+      ],
+      "label": "金手指 › 永久增幅记录 › E",
+      "group": "金手指",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "I"
+      ],
+      "label": "金手指 › 永久增幅记录 › I",
+      "group": "金手指",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "P"
+      ],
+      "label": "金手指 › 永久增幅记录 › P",
+      "group": "金手指",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "S"
+      ],
+      "label": "金手指 › 永久增幅记录 › S",
+      "group": "金手指",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物"
+      ],
+      "label": "可制造 › 产物",
+      "group": "可制造",
+      "description": "全部已审核配方表；每项独立记录科技、技能、工具、设施与材料条件，T1-2使用物品，T3-5使用营地资源",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "材料"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 材料",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "等级"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › 等级",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "类型"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › 类型",
+      "group": "可制造",
+      "description": "设施功能分类；具体设施名称作为记录键",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "居住",
+        "防御",
+        "生产",
+        "仓储",
+        "医疗",
+        "训练",
+        "研究",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "效果"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › 效果",
+      "group": "可制造",
+      "description": "明确记录设施可提供的生产、研究、医疗、防御或生活功能",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "condition"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › condition",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "desc"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › desc",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出建筑",
+        "status"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出建筑 › status",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "完好",
+        "轻微损坏",
+        "中度损坏",
+        "严重损坏",
+        "损毁",
+        "建设中"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出类别"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出类别",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "食物与水",
+        "医疗药品",
+        "建筑材料",
+        "武器弹药",
+        "燃料能源",
+        "工具零件",
+        "护甲衣物",
+        "载具配件",
+        "其他杂物",
+        "载具",
+        "营地建筑"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出类型"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出类型",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "物品",
+        "载具",
+        "营地建筑"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出描述"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出描述",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出名称"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出名称",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出品质"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出品质",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "普通",
+        "精良",
+        "稀有",
+        "史诗",
+        "传说"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出数量"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出数量",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "庇护等级"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 庇护等级",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "防御设施"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 防御设施",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "供能"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 供能",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "供水"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 供水",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "可居住人数"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 可居住人数",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "生活设施"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 生活设施",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "已部署"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 已部署",
+      "group": "可制造",
+      "description": "只有停车、锚定或完成部署后才作为庇护所使用",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "基地",
+        "运作情况"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 基地 › 运作情况",
+      "group": "可制造",
+      "description": "移动基地当前的居住、供能、维护和警戒情况",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "性能",
+        "防御"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 性能 › 防御",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "性能",
+        "攻击"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 性能 › 攻击",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "性能",
+        "描述"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 性能 › 描述",
+      "group": "可制造",
+      "description": "整车基础性能说明；不得把超级引擎、附加装甲等可安装或可拆卸改装件塞进这里",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "性能",
+        "速度"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 性能 › 速度",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "性能",
+        "载重"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › 性能 › 载重",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "appearance"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › appearance",
+      "group": "可制造",
+      "description": "整车固有外观；可安装或可拆卸改装必须写入配件，不能只写在外观里",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "condition"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › condition",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "fuel"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › fuel",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "mileage"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › mileage",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "产出载具",
+        "type"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 产出载具 › type",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "民用汽车",
+        "商用车辆",
+        "二轮载具",
+        "重装载具",
+        "水上载具",
+        "航空载具",
+        "基地型载具",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "分级"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 分级",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "耗时分钟"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 耗时分钟",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "建议能力"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 建议能力",
+      "group": "可制造",
+      "description": "仅用于说明适合参与施工的能力方向，不作为技能名称硬门槛",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "建筑类型"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 建筑类型",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "居住",
+        "防御",
+        "生产",
+        "仓储",
+        "医疗",
+        "训练",
+        "研究",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "描述"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 描述",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "配方提示"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 配方提示",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "前置建筑"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 前置建筑",
+      "group": "可制造",
+      "description": "所需设施类型或名称；空字符串表示无需设施",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "前置建筑等级"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 前置建筑等级",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "施工人数"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 施工人数",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "所需工具"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 所需工具",
+      "group": "可制造",
+      "description": "制造时必须可接触但不会被消耗的工具用途或类别；按同类工具核验，不要求库存名称逐字一致",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "所需技能"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 所需技能",
+      "group": "可制造",
+      "description": "制造建议技能及熟练度，例如 {机械加工:3}；影响耗时、风险与品质，不作为禁止制造的硬门槛",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "所需技能",
+        "{名称}"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 所需技能 › {名称}",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "所需科技"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 所需科技",
+      "group": "可制造",
+      "description": "解锁配方所需的科技节点ID；可填写单个字符串或数组",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "体力消耗"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 体力消耗",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "消耗方式"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 消耗方式",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "物品",
+        "资源池"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "产物",
+        "{配方名}",
+        "重量"
+      ],
+      "label": "可制造 › 产物 › {配方名} › 重量",
+      "group": "可制造",
+      "description": "单个产出单位的重量，单位kg；产出总重由产出数量乘以重量计算",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树"
+      ],
+      "label": "可制造 › 科技树",
+      "group": "可制造",
+      "description": "科技节点状态；保留已有值，不由正文解锁或改写",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树",
+        "{名称}",
+        "解锁时间"
+      ],
+      "label": "可制造 › 科技树 › {名称} › 解锁时间",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树",
+        "{名称}",
+        "来源"
+      ],
+      "label": "可制造 › 科技树 › {名称} › 来源",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树",
+        "{名称}",
+        "已解锁"
+      ],
+      "label": "可制造 › 科技树 › {名称} › 已解锁",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树进度"
+      ],
+      "label": "可制造 › 科技树进度",
+      "group": "可制造",
+      "description": "科技节点总体掌握比例0-100；保留已有值，不由正文更新",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方"
+      ],
+      "label": "可制造 › 预审配方",
+      "group": "可制造",
+      "description": "待审核配方申请；只保存申请内容，审核通过后写入产物并移除，拒绝后直接移除",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方",
+        "{名称}",
+        "产出类别"
+      ],
+      "label": "可制造 › 预审配方 › {名称} › 产出类别",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "食物与水",
+        "医疗药品",
+        "建筑材料",
+        "武器弹药",
+        "燃料能源",
+        "工具零件",
+        "护甲衣物",
+        "载具配件",
+        "其他杂物",
+        "载具",
+        "营地建筑"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方",
+        "{名称}",
+        "产出类型"
+      ],
+      "label": "可制造 › 预审配方 › {名称} › 产出类型",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "物品",
+        "载具",
+        "营地建筑"
+      ]
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方",
+        "{名称}",
+        "描述"
+      ],
+      "label": "可制造 › 预审配方 › {名称} › 描述",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方",
+        "{名称}",
+        "提交时间"
+      ],
+      "label": "可制造 › 预审配方 › {名称} › 提交时间",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "可制造",
+        "预审配方",
+        "{名称}",
+        "载具类型"
+      ],
+      "label": "可制造 › 预审配方 › {名称} › 载具类型",
+      "group": "可制造",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "民用汽车",
+        "商用车辆",
+        "二轮载具",
+        "重装载具",
+        "水上载具",
+        "航空载具",
+        "基地型载具",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "扩展内容",
+        "暗线主角"
+      ],
+      "label": "扩展内容 › 暗线主角",
+      "group": "扩展内容",
+      "description": "启用约修亚与林青的可选暗线内容",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "超事件"
+      ],
+      "label": "扩展内容 › 超事件",
+      "group": "扩展内容",
+      "description": "启用当前国籍的末世期互斥超事件",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "瑟瑟加强"
+      ],
+      "label": "扩展内容 › 瑟瑟加强",
+      "group": "扩展内容",
+      "description": "启用仅限成年角色的生理、孕产、战败捕获等扩展条目",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "业火归途"
+      ],
+      "label": "扩展内容 › 业火归途",
+      "group": "扩展内容",
+      "description": "启用业火归途叙事与机制条目",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "质形重构"
+      ],
+      "label": "扩展内容 › 质形重构",
+      "group": "扩展内容",
+      "description": "启用质形重构（分解异能）金手指：亚空间材料、图谱库与属性增幅；默认关闭，需在创角页或变量中显式开启",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "任务队列"
+      ],
+      "label": "任务队列",
+      "group": "任务队列",
+      "description": "经营任务队列完整记录",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "生理追踪"
+      ],
+      "label": "生理追踪",
+      "group": "生理追踪",
+      "description": "瑟瑟加强的结构化成年角色生理记录；关闭内容包时保持为空",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "健康状态"
+      ],
+      "label": "生理追踪 › {角色名} › 健康状态",
+      "group": "生理追踪",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "阶段"
+      ],
+      "label": "生理追踪 › {角色名} › 阶段",
+      "group": "生理追踪",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "不适用",
+        "未初始化",
+        "月经期",
+        "卵泡期",
+        "排卵期",
+        "黄体期",
+        "孕早期",
+        "孕中期",
+        "孕晚期",
+        "分娩期",
+        "产后恢复期",
+        "哺乳期"
+      ]
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "适用"
+      ],
+      "label": "生理追踪 › {角色名} › 适用",
+      "group": "生理追踪",
+      "description": "是否对该成年角色启用生理追踪",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "孕产日"
+      ],
+      "label": "生理追踪 › {角色名} › 孕产日",
+      "group": "生理追踪",
+      "description": "0=未处于孕产期，1~30=孕期或产后日数",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "周期日"
+      ],
+      "label": "生理追踪 › {角色名} › 周期日",
+      "group": "生理追踪",
+      "description": "0=未初始化，1~28=当前周期日",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "生理追踪",
+        "{角色名}",
+        "最近结算时间"
+      ],
+      "label": "生理追踪 › {角色名} › 最近结算时间",
+      "group": "生理追踪",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "世界阶段"
+      ],
+      "label": "世界阶段",
+      "group": "世界阶段",
+      "description": "世界阶段：秩序期=8月24日12:00前，爆发期=8月24日12:00~8月26日12:00，末世期=8月26日12:00后",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "秩序期",
+        "爆发期",
+        "末世期"
+      ]
+    },
+    {
+      "path": [
+        "世界事件"
+      ],
+      "label": "世界事件",
+      "group": "世界事件",
+      "description": "世界事件完整记录",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "世界事件",
+        "{事件名}",
+        "desc"
+      ],
+      "label": "世界事件 › {事件名} › desc",
+      "group": "世界事件",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "世界事件",
+        "{事件名}",
+        "location"
+      ],
+      "label": "世界事件 › {事件名} › location",
+      "group": "世界事件",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "世界事件",
+        "{事件名}",
+        "time"
+      ],
+      "label": "世界事件 › {事件名} › time",
+      "group": "世界事件",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "世界事件",
+        "{事件名}",
+        "title"
+      ],
+      "label": "世界事件 › {事件名} › title",
+      "group": "世界事件",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "世界事件",
+        "{事件名}",
+        "type"
+      ],
+      "label": "世界事件 › {事件名} › type",
+      "group": "世界事件",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "势力发展"
+      ],
+      "label": "势力发展",
+      "group": "势力发展",
+      "description": "只记录当前游玩国家的既有势力；各势力独立推进，不共享阶段",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "势力发展",
+        "{势力名}",
+        "国家"
+      ],
+      "label": "势力发展 › {势力名} › 国家",
+      "group": "势力发展",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "华国",
+        "美利坚国",
+        "法国",
+        "大毛国",
+        "日本国",
+        "巴西国",
+        "北非",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "势力发展",
+        "{势力名}",
+        "阶段"
+      ],
+      "label": "势力发展 › {势力名} › 阶段",
+      "group": "势力发展",
+      "description": "由进展决定：0~24萌芽，25~49结伙，50~74立旗，75~100成型；覆灭后停止推进",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "萌芽",
+        "结伙",
+        "立旗",
+        "成型",
+        "覆灭"
+      ]
+    },
+    {
+      "path": [
+        "势力发展",
+        "{势力名}",
+        "进展"
+      ],
+      "label": "势力发展 › {势力名} › 进展",
+      "group": "势力发展",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "势力发展",
+        "{势力名}",
+        "已覆灭"
+      ],
+      "label": "势力发展 › {势力名} › 已覆灭",
+      "group": "势力发展",
+      "description": "",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "势力发展",
+        "{势力名}",
+        "最近结算时间"
+      ],
+      "label": "势力发展 › {势力名} › 最近结算时间",
+      "group": "势力发展",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "私人通讯"
+      ],
+      "label": "私人通讯",
+      "group": "私人通讯",
+      "description": "私人通讯完整记录，按联系人分组",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "私人通讯",
+        "{名称}"
+      ],
+      "label": "私人通讯 › {名称}",
+      "group": "私人通讯",
+      "description": "",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "特质",
+        "负面"
+      ],
+      "label": "特质 › 负面",
+      "group": "特质",
+      "description": "负面特质列表",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "特质",
+        "正面"
+      ],
+      "label": "特质 › 正面",
+      "group": "特质",
+      "description": "正面特质列表",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "特质",
+        "中性"
+      ],
+      "label": "特质 › 中性",
+      "group": "特质",
+      "description": "中性特质列表",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "特质",
+        "自定义"
+      ],
+      "label": "特质 › 自定义",
+      "group": "特质",
+      "description": "自定义特质列表",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "特质",
+        "自定义详情"
+      ],
+      "label": "特质 › 自定义详情",
+      "group": "特质",
+      "description": "自定义特质详情，以特质名为键；供状态栏展示且兼容旧档纯名称数组",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "特质",
+        "自定义详情",
+        "{名称}",
+        "描述"
+      ],
+      "label": "特质 › 自定义详情 › {名称} › 描述",
+      "group": "特质",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "特质",
+        "自定义详情",
+        "{名称}",
+        "属性修正"
+      ],
+      "label": "特质 › 自定义详情 › {名称} › 属性修正",
+      "group": "特质",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "图谱库"
+      ],
+      "label": "图谱库",
+      "group": "图谱库",
+      "description": "",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "材料"
+      ],
+      "label": "图谱库 › {图谱名} › 材料",
+      "group": "图谱库",
+      "description": "投入材料清单；材料名强制归并为 19 类概念材料，制造时逐项与 /亚空间/材料 核对",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "产出属性"
+      ],
+      "label": "图谱库 › {图谱名} › 产出属性",
+      "group": "图谱库",
+      "description": "末日卡口径的产出属性：分类、品质、重量、完整度与叙事效果",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "产出数量"
+      ],
+      "label": "图谱库 › {图谱名} › 产出数量",
+      "group": "图谱库",
+      "description": "一次炼制产出的件数，默认 1；单件质量过小的物品（如箭矢）可按批次定义，材料为该批次总量",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "获得时间"
+      ],
+      "label": "图谱库 › {图谱名} › 获得时间",
+      "group": "图谱库",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "来源"
+      ],
+      "label": "图谱库 › {图谱名} › 来源",
+      "group": "图谱库",
+      "description": "图谱获取途径",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "实物解析",
+        "图纸收录",
+        "手工解析",
+        "科技研究"
+      ]
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "品质"
+      ],
+      "label": "图谱库 › {图谱名} › 品质",
+      "group": "图谱库",
+      "description": "图谱品质，最低为普通；决定炼制产物的品质。解析高品物品得到的图谱，品质随之提高",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "普通",
+        "精良",
+        "稀有",
+        "史诗",
+        "传说"
+      ]
+    },
+    {
+      "path": [
+        "图谱库",
+        "{图谱名}",
+        "通用品类"
+      ],
+      "label": "图谱库 › {图谱名} › 通用品类",
+      "group": "图谱库",
+      "description": "归一化后的通用品类名；不得含品牌、型号或独一件特征",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "无定义角色模式"
+      ],
+      "label": "无定义角色模式",
+      "group": "无定义角色模式",
+      "description": "开启后不启用世界书中的预定义人物详情与各国已定义NPC摘要；人物由剧情按需创建",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "物品"
+      ],
+      "label": "物品",
+      "group": "物品",
+      "description": "物品栏；普通物品与载具配件共用唯一解析入口",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "物品",
+        "{物品名}"
+      ],
+      "label": "物品 › {物品名}",
+      "group": "物品",
+      "description": "",
+      "dynamic": true,
+      "type": "union"
+    },
+    {
+      "path": [
+        "叙事模式"
+      ],
+      "label": "叙事模式",
+      "group": "叙事模式",
+      "description": "创角确定的长期叙事难度与契约模式；仅由用户明确切换",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "爽文",
+        "正常",
+        "困难",
+        "地狱",
+        "魅魔契约"
+      ]
+    },
+    {
+      "path": [
+        "亚空间",
+        "材料"
+      ],
+      "label": "亚空间 › 材料",
+      "group": "亚空间",
+      "description": "概念材料库存；合并同类项，无限容量，不计负重，不进物品栏",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "亚空间",
+        "材料",
+        "{材料名}",
+        "KG"
+      ],
+      "label": "亚空间 › 材料 › {材料名} › KG",
+      "group": "亚空间",
+      "description": "材料质量（千克），精确到克；唯一计量口径，份数已取消",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "bmi"
+      ],
+      "label": "衍生状态 › bmi",
+      "group": "衍生状态",
+      "description": "BMI体型等级",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "过瘦",
+        "较瘦",
+        "标准",
+        "较胖",
+        "过胖"
+      ]
+    },
+    {
+      "path": [
+        "衍生状态",
+        "camp"
+      ],
+      "label": "衍生状态 › camp",
+      "group": "衍生状态",
+      "description": "所属营地",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "mental_status"
+      ],
+      "label": "衍生状态 › mental_status",
+      "group": "衍生状态",
+      "description": "必须综合描述主导情绪、压力来源、警觉程度、意志与行为倾向；有显著波动时建议60~140字，不能只写冷静或紧张",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "nationality"
+      ],
+      "label": "衍生状态 › nationality",
+      "group": "衍生状态",
+      "description": "国籍，影响出生点",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "华国",
+        "美利坚国",
+        "法国",
+        "大毛国",
+        "日本国",
+        "巴西国",
+        "北非",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "衍生状态",
+        "physical_status"
+      ],
+      "label": "衍生状态 › physical_status",
+      "group": "衍生状态",
+      "description": "必须综合描述疼痛、伤势、疲劳、饥渴、感染征兆、药效与行动影响；有异常时建议60~140字，不能只写健康或受伤",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "reputation"
+      ],
+      "label": "衍生状态 › reputation",
+      "group": "衍生状态",
+      "description": "名声等级",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "遗臭万年",
+        "劣迹斑斑",
+        "默默无闻",
+        "声誉鹊起",
+        "青史留名"
+      ]
+    },
+    {
+      "path": [
+        "业火记录",
+        "关键记录"
+      ],
+      "label": "业火记录 › 关键记录",
+      "group": "业火记录",
+      "description": "",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "业火记录",
+        "路线阶段"
+      ],
+      "label": "业火记录 › 路线阶段",
+      "group": "业火记录",
+      "description": "",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "未开始",
+        "已启用",
+        "进行中",
+        "已完成"
+      ]
+    },
+    {
+      "path": [
+        "业火记录",
+        "默示录接触度"
+      ],
+      "label": "业火记录 › 默示录接触度",
+      "group": "业火记录",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "业火记录",
+        "杀戮压力"
+      ],
+      "label": "业火记录 › 杀戮压力",
+      "group": "业火记录",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "成员"
+      ],
+      "label": "营地 › 成员",
+      "group": "营地",
+      "description": "营地成员完整记录",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "营地",
+        "成员",
+        "{名称}",
+        "角色"
+      ],
+      "label": "营地 › 成员 › {名称} › 角色",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "领袖",
+        "骨干",
+        "普通成员",
+        "工匠",
+        "守卫",
+        "医生",
+        "农夫",
+        "侦察兵",
+        "交易员",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "成员",
+        "{名称}",
+        "状态"
+      ],
+      "label": "营地 › 成员 › {名称} › 状态",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "成员",
+        "{名称}",
+        "detail"
+      ],
+      "label": "营地 › 成员 › {名称} › detail",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "防御状态"
+      ],
+      "label": "营地 › 防御状态",
+      "group": "营地",
+      "description": "营地防御概况",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑"
+      ],
+      "label": "营地 › 建筑",
+      "group": "营地",
+      "description": "营地功能建筑，等级1-5",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "等级"
+      ],
+      "label": "营地 › 建筑 › {名称} › 等级",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "类型"
+      ],
+      "label": "营地 › 建筑 › {名称} › 类型",
+      "group": "营地",
+      "description": "设施功能分类；具体设施名称作为记录键",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "居住",
+        "防御",
+        "生产",
+        "仓储",
+        "医疗",
+        "训练",
+        "研究",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "效果"
+      ],
+      "label": "营地 › 建筑 › {名称} › 效果",
+      "group": "营地",
+      "description": "明确记录设施可提供的生产、研究、医疗、防御或生活功能",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "condition"
+      ],
+      "label": "营地 › 建筑 › {名称} › condition",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "desc"
+      ],
+      "label": "营地 › 建筑 › {名称} › desc",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "建筑",
+        "{名称}",
+        "status"
+      ],
+      "label": "营地 › 建筑 › {名称} › status",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "完好",
+        "轻微损坏",
+        "中度损坏",
+        "严重损坏",
+        "损毁",
+        "建设中"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "近期动态"
+      ],
+      "label": "营地 › 近期动态",
+      "group": "营地",
+      "description": "营地近期事件日志；清理策略由更新规则负责",
+      "dynamic": false,
+      "type": "array"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "床位"
+      ],
+      "label": "营地 › 经营 › 床位",
+      "group": "营地",
+      "description": "当前可安全使用的居住床位",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "当前瓶颈"
+      ],
+      "label": "营地 › 经营 › 当前瓶颈",
+      "group": "营地",
+      "description": "目前最限制营地发展的一个具体问题及其直接原因",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "当前优势"
+      ],
+      "label": "营地 › 经营 › 当前优势",
+      "group": "营地",
+      "description": "营地当前最可靠、可以围绕其制定策略的一项优势",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "方针"
+      ],
+      "label": "营地 › 经营 › 方针",
+      "group": "营地",
+      "description": "营地长期经营取向；改变收益结构，也会产生相应代价",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "均衡",
+        "保守",
+        "扩张",
+        "军管",
+        "生产优先",
+        "生存优先"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "警戒"
+      ],
+      "label": "营地 › 经营 › 警戒",
+      "group": "营地",
+      "description": "当前警戒投入；影响防御、劳动力和疲劳",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "低",
+        "中",
+        "高",
+        "封锁"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "可用劳动力"
+      ],
+      "label": "营地 › 经营 › 可用劳动力",
+      "group": "营地",
+      "description": "未被伤病、警戒或既有任务占用、可立即调度的人数",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "连续稳定天数"
+      ],
+      "label": "营地 › 经营 › 连续稳定天数",
+      "group": "营地",
+      "description": "完整经营日结算后仍无短缺、失控或重大中断的连续天数",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "配给"
+      ],
+      "label": "营地 › 经营 › 配给",
+      "group": "营地",
+      "description": "生活物资配给强度；影响消耗、士气与健康",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "宽松",
+        "标准",
+        "节省",
+        "紧急"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "燃料日净值"
+      ],
+      "label": "营地 › 经营 › 燃料日净值",
+      "group": "营地",
+      "description": "一个完整经营日内燃料能源的预计收入减支出",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "上次结算时间"
+      ],
+      "label": "营地 › 经营 › 上次结算时间",
+      "group": "营地",
+      "description": "最近一次完整经营日结算对应的游戏内时间；防止同一天重复结算",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "生产重点"
+      ],
+      "label": "营地 › 经营 › 生产重点",
+      "group": "营地",
+      "description": "当前唯一优先生产方向；其他生产维持常规或让位",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "食物与水",
+        "医疗药品",
+        "建筑材料",
+        "武器弹药",
+        "燃料能源",
+        "工具零件",
+        "休整"
+      ]
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "食水日净值"
+      ],
+      "label": "营地 › 经营 › 食水日净值",
+      "group": "营地",
+      "description": "一个完整经营日内食物与水的预计收入减支出",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "维护压力"
+      ],
+      "label": "营地 › 经营 › 维护压力",
+      "group": "营地",
+      "description": "设施失修、备件短缺与积压工作的综合压力",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "稳定度"
+      ],
+      "label": "营地 › 经营 › 稳定度",
+      "group": "营地",
+      "description": "供需、组织、防御和内部秩序的综合稳定度",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "医疗日净值"
+      ],
+      "label": "营地 › 经营 › 医疗日净值",
+      "group": "营地",
+      "description": "一个完整经营日内医疗药品的预计收入减支出",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "噪音风险"
+      ],
+      "label": "营地 › 经营 › 噪音风险",
+      "group": "营地",
+      "description": "发电、施工、人口与活动造成的暴露风险",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "可访问"
+      ],
+      "label": "营地 › 可访问",
+      "group": "营地",
+      "description": "角色当前是否能实际接触营地设施和库存",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "营地",
+        "领袖"
+      ],
+      "label": "营地 › 领袖",
+      "group": "营地",
+      "description": "营地领袖或负责人",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "名称"
+      ],
+      "label": "营地 › 名称",
+      "group": "营地",
+      "description": "营地名称",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "人数"
+      ],
+      "label": "营地 › 人数",
+      "group": "营地",
+      "description": "营地人数",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "士气"
+      ],
+      "label": "营地 › 士气",
+      "group": "营地",
+      "description": "营地士气0-100",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "所在地"
+      ],
+      "label": "营地 › 所在地",
+      "group": "营地",
+      "description": "营地固定地点",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "物资"
+      ],
+      "label": "营地 › 物资",
+      "group": "营地",
+      "description": "营地公共物资，与角色物品栏使用同一结构",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "营地",
+        "物资",
+        "{名称}"
+      ],
+      "label": "营地 › 物资 › {名称}",
+      "group": "营地",
+      "description": "",
+      "dynamic": true,
+      "type": "union"
+    },
+    {
+      "path": [
+        "营地",
+        "已建立"
+      ],
+      "label": "营地 › 已建立",
+      "group": "营地",
+      "description": "营地是否真实存在；前端不得从空对象或名称自行猜测",
+      "dynamic": false,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "营地",
+        "运作情况"
+      ],
+      "label": "营地 › 运作情况",
+      "group": "营地",
+      "description": "营地当前运作状态",
+      "dynamic": false,
+      "type": "string"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "工具零件"
+      ],
+      "label": "营地 › 资源 › 工具零件",
+      "group": "营地",
+      "description": "工具类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "护甲衣物"
+      ],
+      "label": "营地 › 资源 › 护甲衣物",
+      "group": "营地",
+      "description": "护甲类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "建筑材料"
+      ],
+      "label": "营地 › 资源 › 建筑材料",
+      "group": "营地",
+      "description": "建材类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "燃料能源"
+      ],
+      "label": "营地 › 资源 › 燃料能源",
+      "group": "营地",
+      "description": "燃料类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "食物与水"
+      ],
+      "label": "营地 › 资源 › 食物与水",
+      "group": "营地",
+      "description": "食物类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "武器弹药"
+      ],
+      "label": "营地 › 资源 › 武器弹药",
+      "group": "营地",
+      "description": "武器类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "医疗药品"
+      ],
+      "label": "营地 › 资源 › 医疗药品",
+      "group": "营地",
+      "description": "医疗类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具"
+      ],
+      "label": "载具",
+      "group": "载具",
+      "description": "载具记录，含性能、仓储与已安装配件；末日房车、移动堡垒、移动飞艇等写为基地型载具并使用基地字段，不重复写入建筑",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "仓储容量"
+      ],
+      "label": "载具 › {载具名} › 仓储容量",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "仓储占用"
+      ],
+      "label": "载具 › {载具名} › 仓储占用",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "庇护等级"
+      ],
+      "label": "载具 › {载具名} › 基地 › 庇护等级",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "防御设施"
+      ],
+      "label": "载具 › {载具名} › 基地 › 防御设施",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "供能"
+      ],
+      "label": "载具 › {载具名} › 基地 › 供能",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "供水"
+      ],
+      "label": "载具 › {载具名} › 基地 › 供水",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "可居住人数"
+      ],
+      "label": "载具 › {载具名} › 基地 › 可居住人数",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "生活设施"
+      ],
+      "label": "载具 › {载具名} › 基地 › 生活设施",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "已部署"
+      ],
+      "label": "载具 › {载具名} › 基地 › 已部署",
+      "group": "载具",
+      "description": "只有停车、锚定或完成部署后才作为庇护所使用",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "基地",
+        "运作情况"
+      ],
+      "label": "载具 › {载具名} › 基地 › 运作情况",
+      "group": "载具",
+      "description": "移动基地当前的居住、供能、维护和警戒情况",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件"
+      ],
+      "label": "载具 › {载具名} › 配件",
+      "group": "载具",
+      "description": "已安装配件；以槽位名为键。完成的引擎、装甲、轮胎、武器、设备等改装必须落在这里",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "category"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › category",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "literal",
+      "options": [
+        "载具配件"
+      ]
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "compatible"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › compatible",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "condition"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › condition",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "count"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › count",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "detail"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › detail",
+      "group": "载具",
+      "description": "配件的构造、材料、来源、外观、磨损或改装痕迹；不得与effect重复，也不得留成无意义短句",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "effect"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › effect",
+      "group": "载具",
+      "description": "配件产生的明确功能、优势与代价",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "emoji"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › emoji",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "name"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › name",
+      "group": "载具",
+      "description": "配件名称；安装进槽位后仍保留名称，不能只剩槽位类型",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "quality"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › quality",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "普通",
+        "精良",
+        "稀有",
+        "史诗",
+        "传说"
+      ]
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "stats",
+        "防御"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › stats › 防御",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "stats",
+        "攻击"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › stats › 攻击",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "stats",
+        "速度"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › stats › 速度",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "stats",
+        "载重"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › stats › 载重",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "type"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › type",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "引擎",
+        "轮胎",
+        "装甲",
+        "后备箱",
+        "货厢",
+        "车架",
+        "履带",
+        "船体",
+        "机身",
+        "甲板设备",
+        "航电系统",
+        "武器挂架",
+        "车载设备",
+        "通用改装位"
+      ]
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "配件",
+        "{名称}",
+        "weight"
+      ],
+      "label": "载具 › {载具名} › 配件 › {名称} › weight",
+      "group": "载具",
+      "description": "单件配件重量，单位kg；禁止填写count件配件的合计重量",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "性能",
+        "防御"
+      ],
+      "label": "载具 › {载具名} › 性能 › 防御",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "性能",
+        "攻击"
+      ],
+      "label": "载具 › {载具名} › 性能 › 攻击",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "性能",
+        "描述"
+      ],
+      "label": "载具 › {载具名} › 性能 › 描述",
+      "group": "载具",
+      "description": "整车基础性能说明；不得把超级引擎、附加装甲等可安装或可拆卸改装件塞进这里",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "性能",
+        "速度"
+      ],
+      "label": "载具 › {载具名} › 性能 › 速度",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "性能",
+        "载重"
+      ],
+      "label": "载具 › {载具名} › 性能 › 载重",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "appearance"
+      ],
+      "label": "载具 › {载具名} › appearance",
+      "group": "载具",
+      "description": "整车固有外观；命名引擎、装甲、轮胎、武器挂架等功能改装必须写入配件槽位，不能用本字段代替",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "condition"
+      ],
+      "label": "载具 › {载具名} › condition",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "fuel"
+      ],
+      "label": "载具 › {载具名} › fuel",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "fuel_type"
+      ],
+      "label": "载具 › {载具名} › fuel_type",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "汽油",
+        "柴油",
+        "电力",
+        "人力",
+        "其他",
+        ""
+      ]
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "location"
+      ],
+      "label": "载具 › {载具名} › location",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "mileage"
+      ],
+      "label": "载具 › {载具名} › mileage",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "name"
+      ],
+      "label": "载具 › {载具名} › name",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "status"
+      ],
+      "label": "载具 › {载具名} › status",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "storage"
+      ],
+      "label": "载具 › {载具名} › storage",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "record"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "storage",
+        "{名称}"
+      ],
+      "label": "载具 › {载具名} › storage › {名称}",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "union"
+    },
+    {
+      "path": [
+        "载具",
+        "{载具名}",
+        "type"
+      ],
+      "label": "载具 › {载具名} › type",
+      "group": "载具",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "民用汽车",
+        "商用车辆",
+        "二轮载具",
+        "重装载具",
+        "水上载具",
+        "航空载具",
+        "基地型载具",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "周围地点"
+      ],
+      "label": "周围地点",
+      "group": "周围地点",
+      "description": "当前位置周边可感知地点；供状态栏雷达渲染，地点离开感知范围时由更新规则逐项remove",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "方向"
+      ],
+      "label": "周围地点 › {名称} › 方向",
+      "group": "周围地点",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "北",
+        "东北",
+        "东",
+        "东南",
+        "南",
+        "西南",
+        "西",
+        "西北",
+        "未知"
+      ]
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "距离"
+      ],
+      "label": "周围地点 › {名称} › 距离",
+      "group": "周围地点",
+      "description": "与当前位置的直线估算距离，单位米",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "可前往"
+      ],
+      "label": "周围地点 › {名称} › 可前往",
+      "group": "周围地点",
+      "description": "",
+      "dynamic": true,
+      "type": "boolean"
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "类型"
+      ],
+      "label": "周围地点 › {名称} › 类型",
+      "group": "周围地点",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "资源点",
+        "危险区",
+        "安全区",
+        "庇护所",
+        "事件区",
+        "未知"
+      ]
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "描述"
+      ],
+      "label": "周围地点 › {名称} › 描述",
+      "group": "周围地点",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "周围地点",
+        "{名称}",
+        "威胁"
+      ],
+      "label": "周围地点 › {名称} › 威胁",
+      "group": "周围地点",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC"
+      ],
+      "label": "NPC",
+      "group": "NPC",
+      "description": "已建档NPC完整记录",
+      "dynamic": false,
+      "type": "record"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "age"
+      ],
+      "label": "NPC › {名称} › age",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "aliases"
+      ],
+      "label": "NPC › {名称} › aliases",
+      "group": "NPC",
+      "description": "同一人物的英文名、外文名、别名与代号；不得因此建立第二份人物记录",
+      "dynamic": true,
+      "type": "array"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "appearance"
+      ],
+      "label": "NPC › {名称} › appearance",
+      "group": "NPC",
+      "description": "可观察的体貌、衣着、神态、伤痕与辨识特征，建议60~140字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "background"
+      ],
+      "label": "NPC › {名称} › background",
+      "group": "NPC",
+      "description": "角色当前已知的身份、经历与关系背景，建议100~220字，不写角色尚未知的秘密",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "current_goal"
+      ],
+      "label": "NPC › {名称} › current_goal",
+      "group": "NPC",
+      "description": "角色眼下的诉求、顾虑和正在推动的目标，建议40~100字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "detail"
+      ],
+      "label": "NPC › {名称} › detail",
+      "group": "NPC",
+      "description": "人物综合描述；记录言行气质、关系变化、近期经历和可持续扮演的细节，建议120~260字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "equipment"
+      ],
+      "label": "NPC › {名称} › equipment",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "gender"
+      ],
+      "label": "NPC › {名称} › gender",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "enum",
+      "options": [
+        "男",
+        "女",
+        "其他"
+      ]
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "hp"
+      ],
+      "label": "NPC › {名称} › hp",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "personality"
+      ],
+      "label": "NPC › {名称} › personality",
+      "group": "NPC",
+      "description": "稳定性格、习惯、底线与压力下的行为倾向，建议60~140字",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "relation"
+      ],
+      "label": "NPC › {名称} › relation",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "A"
+      ],
+      "label": "NPC › {名称} › SPECIAL › A",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "C"
+      ],
+      "label": "NPC › {名称} › SPECIAL › C",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "E"
+      ],
+      "label": "NPC › {名称} › SPECIAL › E",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "I"
+      ],
+      "label": "NPC › {名称} › SPECIAL › I",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "L"
+      ],
+      "label": "NPC › {名称} › SPECIAL › L",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "P"
+      ],
+      "label": "NPC › {名称} › SPECIAL › P",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "SPECIAL",
+        "S"
+      ],
+      "label": "NPC › {名称} › SPECIAL › S",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "number"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "status"
+      ],
+      "label": "NPC › {名称} › status",
+      "group": "NPC",
+      "description": "当前身体、处境与行动状态，建议40~100字，避免只写正常、存活等空泛短词",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "thoughts"
+      ],
+      "label": "NPC › {名称} › thoughts",
+      "group": "NPC",
+      "description": "角色此刻真实而具体的想法、判断与情绪，建议60~140字，不用一句模板化态度敷衍",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC",
+        "{名称}",
+        "title"
+      ],
+      "label": "NPC › {名称} › title",
+      "group": "NPC",
+      "description": "",
+      "dynamic": true,
+      "type": "string"
+    },
+    {
+      "path": [
+        "NPC行为模式"
+      ],
+      "label": "NPC行为模式",
+      "group": "NPC行为模式",
+      "description": "NPC行为模式：正常型=大部分NPC有善恶之分，全员恶人型=几乎所有NPC都自私残忍不可信",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "正常型",
+        "全员恶人型"
+      ]
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "A"
+      ],
+      "label": "SPECIAL › A",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "C"
+      ],
+      "label": "SPECIAL › C",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "E"
+      ],
+      "label": "SPECIAL › E",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "I"
+      ],
+      "label": "SPECIAL › I",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "L"
+      ],
+      "label": "SPECIAL › L",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "P"
+      ],
+      "label": "SPECIAL › P",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "S"
+      ],
+      "label": "SPECIAL › S",
+      "group": "SPECIAL",
+      "description": "",
+      "dynamic": false,
+      "type": "number"
+    }
+  ]
+}

@@ -10,122 +10,145 @@
   <header class="topbar">
     <div>
       <p class="eyebrow">JMZQ WORKSHOP</p>
-      <h1>缄默之秋创意工坊</h1>
-      <p class="subtitle">制作兼容扩展或深度改造包。所有编辑都在本机浏览器完成。</p>
+      <h1>把一个点子做成扩展</h1>
+      <p class="subtitle">不需要会写代码。跟着步骤填写，编辑器会替你生成可安装的作品包。</p>
     </div>
     <div class="top-actions">
-      <label class="button ghost">导入作品包<input id="package-import" type="file" accept=".json,.jmzqpack.json" hidden></label>
-      <button id="save-draft" class="button ghost" type="button">保存草稿</button>
+      <span id="save-state" class="save-state" aria-live="polite"><i></i>草稿会自动保存</span>
+      <label class="button ghost">继续已有作品<input id="package-import" type="file" accept=".json,.jmzqpack.json" hidden></label>
+      <button id="save-draft" class="button ghost" type="button">立即保存</button>
       <button id="export-package" class="button primary" type="button">导出作品包</button>
     </div>
   </header>
 
   <main class="workspace">
-    <nav class="steps" aria-label="编辑步骤">
-      <button class="step active" data-panel="basic" type="button"><b>01</b><span>基本信息</span></button>
-      <button class="step" data-panel="worldbook" type="button"><b>02</b><span>世界书</span></button>
-      <button class="step" data-panel="bindings" type="button"><b>03</b><span>变量关联</span></button>
-      <button class="step" data-panel="deep" type="button"><b>04</b><span>深度改造</span></button>
-      <button class="step" data-panel="publish" type="button"><b>05</b><span>检查与投稿</span></button>
+    <nav class="steps" aria-label="制作步骤">
+      <button class="step active" data-panel="kind" type="button"><b>1</b><span>选做法<small>从一个点子开始</small></span></button>
+      <button class="step" data-panel="basic" type="button"><b>2</b><span>介绍作品<small>让玩家看得懂</small></span></button>
+      <button class="step" data-panel="worldbook" type="button"><b>3</b><span>编写内容<small>像酒馆世界书一样</small></span></button>
+      <button class="step" data-panel="bindings" type="button"><b>4</b><span>出现时机<small>按游戏状态启用</small></span></button>
+      <button class="step deep-only" data-panel="deep" type="button"><b>5</b><span>改造文件<small>完整改造才需要</small></span></button>
+      <button class="step" data-panel="publish" type="button"><b>✓</b><span>检查发布<small>生成作品包</small></span></button>
     </nav>
 
-    <section class="panel active" data-panel-name="basic">
+    <section class="panel active" data-panel-name="kind">
       <div class="panel-heading">
-        <div><span class="index">01</span><h2>作品基本信息</h2></div>
-        <p>作品 ID 发布后不要修改，它同时是 MVU 私有数据的命名空间。</p>
+        <div><span class="index">01</span><div><h2>你想做哪一种？</h2><p>第一次制作建议选轻量扩展，内容可随时安装或移除。</p></div></div>
       </div>
       <div class="type-grid">
         <label class="type-card selected">
           <input type="radio" name="kind" value="compatible" checked>
-          <strong>兼容扩展</strong>
-          <span>新增世界书条目，并用声明式条件连接原版变量。支持一键安装、更新和卸载。</span>
+          <span class="type-icon">🧩</span>
+          <strong>轻量扩展</strong>
+          <span>增加设定、事件、角色或玩法提示。不会替换本体文件，小助手可自动管理。</span>
+          <em>推荐第一次制作</em>
         </label>
         <label class="type-card danger">
           <input type="radio" name="kind" value="deep">
-          <strong>深度改造</strong>
-          <span>替换 ZOD、状态栏、正则或核心脚本。提供文件、版本要求和人工安装说明。</span>
+          <span class="type-icon">🛠️</span>
+          <strong>完整改造</strong>
+          <span>需要替换状态栏、ZOD、正则或脚本。玩家要按你的说明手动安装。</span>
+          <em>适合会修改文件的作者</em>
         </label>
       </div>
+      <div class="journey">
+        <h3>轻量扩展怎么工作？</h3>
+        <div class="journey-row">
+          <div><span>1</span><b>写内容</b><small>例如新势力、新事件</small></div><i>→</i>
+          <div><span>2</span><b>选出现时机</b><small>例如末世期或下雨时</small></div><i>→</i>
+          <div><span>3</span><b>导出投稿</b><small>玩家一键安装</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-panel-name="basic">
+      <div class="panel-heading">
+        <div><span class="index">02</span><div><h2>向玩家介绍你的作品</h2><p>这里写商店里会看到的信息。技术设置由编辑器自动处理。</p></div></div>
+      </div>
       <div class="form-grid">
-        <label>作品名称<input id="name" maxlength="80" placeholder="例如：极寒求生扩展"></label>
-        <label>作品 ID<input id="id" maxlength="64" placeholder="作者名.作品名"></label>
-        <label>版本<input id="version" value="1.0.0" placeholder="1.0.0"></label>
+        <label>作品名称<span class="field-help">简短、好记，直接说它增加了什么</span><input id="name" maxlength="80" placeholder="例如：极寒求生"></label>
         <label>作者<input id="author" maxlength="80" placeholder="你的昵称"></label>
-        <label>最低宿主协议<input id="minimum-host" value="1" readonly></label>
-        <label class="wide">简介<textarea id="summary" maxlength="300" rows="4" placeholder="向玩家说明这个扩展增加了什么。"></textarea></label>
+        <label>作品代号<span class="field-help">只用于区分作品，发布后尽量别改</span><input id="id" maxlength="64" placeholder="例如：xiaoming.cold-survival"></label>
+        <label>版本<input id="version" value="1.0.0" placeholder="1.0.0"></label>
+        <input id="minimum-host" value="1" type="hidden">
+        <label class="wide">给玩家的简介<span class="field-help">说清楚新增内容、玩法特色，以及适合什么玩家</span><textarea id="summary" maxlength="300" rows="5" placeholder="例如：加入持续降温、暴雪事件和保暖物资，让冬季求生更紧张。"></textarea></label>
       </div>
     </section>
 
     <section class="panel" data-panel-name="worldbook">
       <div class="panel-heading">
-        <div><span class="index">02</span><h2>世界书条目</h2></div>
+        <div><span class="index">03</span><div><h2>编写要交给 AI 的内容</h2><p>一条只讲一件事。标题和关键词不会发给 AI，只有正文会进入提示词。</p></div></div>
         <div class="inline-actions">
-          <label class="button ghost">导入世界书<input id="worldbook-import" type="file" accept=".json" hidden></label>
-          <button id="namespace-entries" class="button ghost" type="button">补全命名空间</button>
-          <button id="add-entry" class="button primary" type="button">新增条目</button>
+          <label class="button ghost">导入酒馆世界书<input id="worldbook-import" type="file" accept=".json" hidden></label>
+          <button id="namespace-entries" class="button ghost" type="button">整理条目名称</button>
+          <button id="add-entry" class="button primary" type="button">＋ 新建条目</button>
         </div>
       </div>
+      <div class="tip-strip"><b>不知道怎么选？</b> 重要且始终有效的规则选蓝灯；只在聊到某件事时出现的设定选绿灯。</div>
       <div class="split-view">
         <aside>
-          <div id="entry-list" class="entry-list empty">尚未添加条目</div>
+          <div class="aside-title"><span>条目列表</span><small id="entry-count">0 条</small></div>
+          <div id="entry-list" class="entry-list empty">点击“新建条目”开始</div>
         </aside>
         <div id="entry-editor" class="editor-card muted-card">
-          <p>选择或新增一个世界书条目后在这里编辑。</p>
+          <div class="empty-illustration">📖</div><p>选择左侧条目，或新建第一条内容。</p>
         </div>
       </div>
     </section>
 
     <section class="panel" data-panel-name="bindings">
       <div class="panel-heading">
-        <div><span class="index">03</span><h2>变量关联</h2></div>
-        <p>条件只读取 MVU，不执行任意代码。没有条件的条目使用默认启用状态。</p>
+        <div><span class="index">04</span><div><h2>这条内容什么时候出现？</h2><p>这是可选步骤。直接从本体数据里点选，不需要知道变量名。</p></div></div>
+      </div>
+      <div class="condition-explainer">
+        <div><span>🎯</span><b>选择一条内容</b><small>例如“暴雪生存规则”</small></div>
+        <i>＋</i>
+        <div><span>🗂️</span><b>选择游戏状态</b><small>例如“环境 → 天气”</small></div>
+        <i>＝</i>
+        <div><span>✨</span><b>满足时自动启用</b><small>例如天气等于暴雪</small></div>
       </div>
       <div class="binding-layout">
-        <label>目标条目<select id="binding-entry"></select></label>
-        <label>组合方式<select id="binding-mode"><option value="all">全部满足</option><option value="any">任一满足</option></select></label>
-        <button id="add-condition" class="button primary" type="button">添加条件</button>
+        <label>要控制的条目<select id="binding-entry"></select></label>
+        <label>有多个条件时<select id="binding-mode"><option value="all">全部满足才出现</option><option value="any">满足任意一个就出现</option></select></label>
+        <button id="add-condition" class="button primary" type="button">＋ 添加出现条件</button>
       </div>
-      <div id="condition-list" class="condition-list empty">当前条目没有变量条件</div>
-      <div class="test-box">
-        <div>
-          <h3>即时试算</h3>
-          <p>粘贴一份 `stat_data`，查看哪些扩展条目会启用。</p>
-        </div>
+      <div id="condition-list" class="condition-list empty">这条内容没有额外条件，将按世界书自身设置工作。</div>
+      <details class="test-box">
+        <summary>用一份角色数据预演结果</summary>
+        <p>这是给熟悉数据的作者使用的检查工具，不影响普通制作。</p>
         <textarea id="test-data" rows="9" spellcheck="false">{
   "世界阶段": "末世期",
   "环境": { "天气": "终年暴雨" }
 }</textarea>
-        <button id="run-test" class="button ghost" type="button">运行试算</button>
-        <pre id="test-result">等待试算</pre>
-      </div>
+        <button id="run-test" class="button ghost" type="button">开始预演</button>
+        <pre id="test-result">等待预演</pre>
+      </details>
     </section>
 
     <section class="panel" data-panel-name="deep">
       <div class="panel-heading">
-        <div><span class="index">04</span><h2>深度改造材料</h2></div>
-        <p>兼容扩展不需要填写。选择深度改造时，此页内容会进入安装指导包。</p>
+        <div><span class="index">05</span><div><h2>添加完整改造文件</h2><p>告诉玩家会替换什么，并写清安装顺序。</p></div></div>
       </div>
       <fieldset>
-        <legend>会替换哪些组件</legend>
+        <legend>这次会改动哪些部分？</legend>
         <div id="replace-options" class="check-grid">
-          <label><input type="checkbox" value="zod">ZOD</label>
+          <label><input type="checkbox" value="zod">游戏数据结构（ZOD）</label>
           <label><input type="checkbox" value="statusbar">状态栏</label>
-          <label><input type="checkbox" value="regex">正则</label>
-          <label><input type="checkbox" value="helper">小助手</label>
+          <label><input type="checkbox" value="regex">酒馆正则</label>
+          <label><input type="checkbox" value="helper">配置小助手</label>
           <label><input type="checkbox" value="worldbook">世界书</label>
           <label><input type="checkbox" value="character-creator">角色创建</label>
         </div>
       </fieldset>
-      <label>适配的本体版本<input id="base-version" placeholder="例如：3.2"></label>
-      <label>安装说明<textarea id="install-guide" rows="10" placeholder="逐项说明需要替换什么、导入什么，以及安装顺序。"></textarea></label>
+      <label>适配的缄默之秋版本<input id="base-version" placeholder="例如：3.2"></label>
+      <label>给玩家的安装步骤<textarea id="install-guide" rows="10" placeholder="按 1、2、3 的顺序说明要导入或替换哪些文件。"></textarea></label>
       <label class="button ghost file-button">添加改造文件<input id="deep-files" type="file" multiple hidden></label>
       <div id="deep-file-list" class="file-list empty">尚未添加文件</div>
     </section>
 
     <section class="panel" data-panel-name="publish">
       <div class="panel-heading">
-        <div><span class="index">05</span><h2>检查与投稿</h2></div>
-        <p>投稿前先导出作品包。当前入口使用 GitHub，不需要创意工坊服务器。</p>
+        <div><span class="index">✓</span><div><h2>最后检查一下</h2><p>编辑器会指出缺少的内容。通过后即可导出并投稿。</p></div></div>
       </div>
       <div id="validation-result" class="validation neutral">尚未检查</div>
       <div class="publish-actions">
@@ -133,16 +156,27 @@
         <button id="publish-export" class="button primary" type="button">导出作品包</button>
         <button id="open-submission" class="button accent" type="button">打开投稿入口</button>
       </div>
-      <p class="submission-note">打开投稿页后，把刚导出的 `.jmzqpack.json` 文件拖入投稿正文即可。审核通过前不会进入小助手目录。</p>
-      <details>
-        <summary>查看生成的注册表预览</summary>
-        <pre id="registry-preview"></pre>
-      </details>
+      <p class="submission-note">投稿页打开后，把导出的 <code>.jmzqpack.json</code> 文件拖进去即可。</p>
+      <details class="advanced-box"><summary>技术预览（一般不用看）</summary><pre id="registry-preview"></pre></details>
     </section>
+
+    <footer class="wizard-nav">
+      <button id="prev-step" class="button ghost" type="button">← 上一步</button>
+      <span id="step-hint">先选择你要制作的类型</span>
+      <button id="next-step" class="button primary" type="button">下一步 →</button>
+    </footer>
   </main>
+
+  <dialog id="variable-picker" class="variable-dialog">
+    <form method="dialog" class="dialog-shell">
+      <header><div><h2>选择游戏里的数据</h2><p id="catalog-summary">这些选项直接来自当前版本的 ZOD。</p></div><button class="icon-button" value="cancel" aria-label="关闭">×</button></header>
+      <input id="variable-search" type="search" placeholder="搜索：天气、生命值、地点、感染……" autocomplete="off">
+      <div id="variable-groups" class="variable-groups"></div>
+      <div id="variable-results" class="variable-results"></div>
+    </form>
+  </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="src/editor.js"></script>
 </body>
 </html>
-
