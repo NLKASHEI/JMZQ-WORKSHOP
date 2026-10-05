@@ -11,7 +11,7 @@
     <div>
       <p class="eyebrow">JMZQ WORKSHOP</p>
       <h1>把一个点子做成扩展</h1>
-      <p class="subtitle">不需要会写代码。跟着步骤填写，编辑器会替你生成可安装的作品包。</p>
+      <p class="subtitle">轻量扩展可以直接编写；完整改造只负责整理你已经做好的文件和安装说明。</p>
     </div>
     <div class="top-actions">
       <span id="save-state" class="save-state" aria-live="polite"><i></i>草稿会自动保存</span>
@@ -25,9 +25,9 @@
     <nav class="steps" aria-label="制作步骤">
       <button class="step active" data-panel="kind" type="button"><b>1</b><span>选做法<small>从一个点子开始</small></span></button>
       <button class="step" data-panel="basic" type="button"><b>2</b><span>介绍作品<small>让玩家看得懂</small></span></button>
-      <button class="step" data-panel="worldbook" type="button"><b>3</b><span>编写内容<small>像酒馆世界书一样</small></span></button>
-      <button class="step" data-panel="bindings" type="button"><b>4</b><span>出现时机<small>按游戏状态启用</small></span></button>
-      <button class="step deep-only" data-panel="deep" type="button"><b>5</b><span>改造文件<small>完整改造才需要</small></span></button>
+      <button class="step light-only" data-panel="worldbook" type="button"><b>3</b><span>编写内容<small>像酒馆世界书一样</small></span></button>
+      <button class="step light-only" data-panel="bindings" type="button"><b>4</b><span>出现时机<small>按游戏状态启用</small></span></button>
+      <button class="step deep-only" data-panel="deep" type="button"><b>3</b><span>打包改造<small>放入已经做好的文件</small></span></button>
       <button class="step" data-panel="publish" type="button"><b>✓</b><span>检查发布<small>生成作品包</small></span></button>
     </nav>
 
@@ -47,13 +47,13 @@
           <input type="radio" name="kind" value="deep">
           <span class="type-icon">🛠️</span>
           <strong>完整改造</strong>
-          <span>需要替换状态栏、ZOD、正则或脚本。玩家要按你的说明手动安装。</span>
+          <span>上传你已经制作好的状态栏、ZOD、正则或脚本。工坊不会用内置编辑器修改这些文件。</span>
           <em>适合会修改文件的作者</em>
         </label>
       </div>
       <div class="journey">
-        <h3>轻量扩展怎么工作？</h3>
-        <div class="journey-row">
+        <h3 id="journey-title">轻量扩展怎么工作？</h3>
+        <div id="journey-row" class="journey-row">
           <div><span>1</span><b>写内容</b><small>例如新势力、新事件</small></div><i>→</i>
           <div><span>2</span><b>选出现时机</b><small>例如末世期或下雨时</small></div><i>→</i>
           <div><span>3</span><b>导出投稿</b><small>玩家一键安装</small></div>
@@ -127,7 +127,13 @@
 
     <section class="panel" data-panel-name="deep">
       <div class="panel-heading">
-        <div><span class="index">05</span><div><h2>添加完整改造文件</h2><p>告诉玩家会替换什么，并写清安装顺序。</p></div></div>
+        <div><span class="index">03</span><div><h2>打包你已经做好的完整改造</h2><p>这里不编辑核心文件，只整理下载、兼容检查、安装和卸载所需的信息。</p></div></div>
+      </div>
+      <div class="boundary-card">
+        <b>小助手会做什么？</b>
+        <span>展示作品、下载文件、检查本体版本和冲突、提醒有新版本，并打开作者写的安装步骤。</span>
+        <b>小助手不会做什么？</b>
+        <span>不会自动覆盖 ZOD、状态栏、正则或脚本。核心文件组合太多，自动替换容易破坏玩家存档。</span>
       </div>
       <fieldset>
         <legend>这次会改动哪些部分？</legend>
@@ -140,9 +146,15 @@
           <label><input type="checkbox" value="character-creator">角色创建</label>
         </div>
       </fieldset>
-      <label>适配的缄默之秋版本<input id="base-version" placeholder="例如：3.2"></label>
+      <div class="editor-row">
+        <label>适配的缄默之秋版本<span class="field-help">必须准确，供小助手拦截不兼容安装</span><input id="base-version" placeholder="例如：3.2"></label>
+        <label>依赖的其他作品（可不填）<span class="field-help">每行一个作品代号</span><textarea id="deep-dependencies" rows="4" placeholder="例如：author.required-mod"></textarea></label>
+      </div>
+      <label>已知冲突（可不填）<span class="field-help">写作品代号或冲突类型，供小助手在下载前提醒</span><textarea id="deep-conflicts" rows="4" placeholder="例如：会覆盖同一套状态栏的其他改造"></textarea></label>
       <label>给玩家的安装步骤<textarea id="install-guide" rows="10" placeholder="按 1、2、3 的顺序说明要导入或替换哪些文件。"></textarea></label>
-      <label class="button ghost file-button">添加改造文件<input id="deep-files" type="file" multiple hidden></label>
+      <label>卸载和恢复步骤<textarea id="uninstall-guide" rows="7" placeholder="说明如何恢复原文件，以及卸载是否会影响现有存档。"></textarea></label>
+      <p class="archive-note"><b>文件怎么放？</b> 如果改造包含多个目录，先在本地按最终安装结构整理好并压缩成 ZIP；这样不会丢失路径。世界书也作为成品 JSON 放进压缩包，不在这里重新编辑。</p>
+      <label class="button ghost file-button">添加成品文件或 ZIP<input id="deep-files" type="file" accept=".zip,.7z,.rar,.json,.js,.html,.css,.md,.txt" multiple hidden></label>
       <div id="deep-file-list" class="file-list empty">尚未添加文件</div>
     </section>
 

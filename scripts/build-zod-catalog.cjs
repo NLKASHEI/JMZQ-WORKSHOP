@@ -119,11 +119,80 @@ function walk(schema, segments = [], depth = 0, dynamic = false) {
 walk(context.__jmzqSchema);
 fields.sort((a, b) => a.path.join('.').localeCompare(b.path.join('.'), 'zh-CN'));
 
+// 编辑器只展示适合长期逻辑判断的稳定状态。自由文本、人物内心、装备描述、动态记录等
+// 虽然属于 ZOD，但值不稳定且通常没有可靠比较意义，不应让普通作者误当成开关。
+const exactConditionFields = new Map(Object.entries({
+  '世界阶段': ['剧情进度', '世界阶段'],
+  '当前活动': ['剧情进度', '当前正在结算的活动'],
+  '超事件.事件ID': ['剧情进度', '当前超事件'],
+  '超事件.进展': ['剧情进度', '超事件进展'],
+  '超事件.已解决': ['剧情进度', '超事件是否解决'],
+  '叙事模式': ['模式与开关', '叙事难度或契约模式'],
+  '感染者行为模式': ['模式与开关', '感染者行为模式'],
+  'NPC行为模式': ['模式与开关', 'NPC行为模式'],
+  '无定义角色模式': ['模式与开关', '是否使用无定义角色模式'],
+  '衍生状态.bmi': ['身份与名声', '体型'],
+  '衍生状态.nationality': ['身份与名声', '国籍'],
+  '衍生状态.reputation': ['身份与名声', '名声'],
+  '衍生状态.camp': ['身份与名声', '所属营地'],
+  '环境.时间': ['时间与环境', '当前时间'],
+  '环境.天气': ['时间与环境', '当前天气'],
+  '环境.location': ['时间与环境', '当前地点'],
+  '环境.comfort': ['时间与环境', '环境舒适度'],
+  '环境.hatred': ['时间与环境', '世界仇恨值'],
+  '环境.radiation': ['时间与环境', '辐射指数'],
+  '环境.threat_level': ['时间与环境', '威胁等级'],
+  '营地.已建立': ['营地', '是否已经建立营地'],
+  '营地.可访问': ['营地', '当前是否能使用营地'],
+  '营地.人数': ['营地', '营地人数'],
+  '营地.士气': ['营地', '营地士气'],
+  '可制造.科技树进度': ['制造与研究', '科技树总体进度'],
+  '业火记录.路线阶段': ['特殊玩法', '业火归途路线阶段'],
+  '业火记录.默示录接触度': ['特殊玩法', '默示录接触度'],
+  '业火记录.杀戮压力': ['特殊玩法', '杀戮压力'],
+  '金手指.已觉醒': ['特殊玩法', '质形重构是否觉醒'],
+}));
+
+const coreLabels = {
+  hp_current: '当前生命值', hunger_current: '当前饱食度', thirst_current: '当前饱水度',
+  stamina_current: '当前体力', morale_current: '当前情绪值', infection_current: '当前感染值',
+};
+const specialLabels = { S: '力量 S', P: '感知 P', E: '耐力 E', C: '魅力 C', I: '智力 I', A: '敏捷 A', L: '运气 L' };
+const campOperatingFields = new Set(['方针', '警戒', '配给', '生产重点', '床位', '可用劳动力', '连续稳定天数', '燃料日净值', '食水日净值', '医疗日净值', '维护压力', '稳定度', '噪音风险']);
+
+function conditionFieldMeta(field) {
+  const key = field.path.join('.');
+  if (exactConditionFields.has(key)) {
+    const [group, label] = exactConditionFields.get(key);
+    return { group, label };
+  }
+  if (field.path[0] === '核心状态' && coreLabels[field.path[1]]) return { group: '生存状态', label: coreLabels[field.path[1]] };
+  if (field.path[0] === 'SPECIAL' && specialLabels[field.path[1]]) return { group: '角色属性', label: specialLabels[field.path[1]] };
+  if (field.path[0] === '扩展内容' && field.type === 'boolean') return { group: '模式与开关', label: `是否启用${field.path[1]}` };
+  if (field.path[0] === '特质' && field.type === 'array') return { group: '身份与名声', label: `${field.path[1]}特质中包含` };
+  if (field.path[0] === '营地' && field.path[1] === '资源' && field.type === 'number') return { group: '营地', label: `${field.path[2]}资源` };
+  if (field.path[0] === '营地' && field.path[1] === '经营' && campOperatingFields.has(field.path[2])) return { group: '营地', label: `营地${field.path[2]}` };
+  if (field.path[0] === '金手指' && field.path[1] === '永久增幅记录' && field.type === 'boolean') return { group: '特殊玩法', label: `${specialLabels[field.path[2]] || field.path[2]}是否已永久增幅` };
+  return null;
+}
+
+const conditionGroupOrder = ['剧情进度', '模式与开关', '生存状态', '角色属性', '身份与名声', '时间与环境', '营地', '制造与研究', '特殊玩法'];
+const conditionFields = fields.flatMap((field) => {
+  const meta = field.dynamic ? null : conditionFieldMeta(field);
+  return meta ? [{ ...field, ...meta, sourceLabel: field.label }] : [];
+}).sort((a, b) => {
+  const groupDifference = conditionGroupOrder.indexOf(a.group) - conditionGroupOrder.indexOf(b.group);
+  return groupDifference || a.label.localeCompare(b.label, 'zh-CN');
+});
+
 const output = {
   generatedFrom: path.relative(path.resolve(repositoryRoot, '..'), zodSourcePath).replaceAll('\\', '/'),
   sourceSha256: crypto.createHash('sha256').update(fs.readFileSync(zodSourcePath)).digest('hex'),
   generatedAt: new Date().toISOString(),
   fieldCount: fields.length,
+  conditionFieldCount: conditionFields.length,
+  conditionGroupOrder,
+  conditionFields,
   fields,
 };
 

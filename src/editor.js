@@ -145,7 +145,18 @@ function currentManifest() {
   } else {
     manifest.baseVersion = $('#base-version').value.trim();
     manifest.installGuide = 'INSTALL.md';
+    manifest.uninstallGuide = 'UNINSTALL.md';
+    manifest.installMode = 'manual';
     manifest.replaces = $$('#replace-options input:checked').map(input => input.value);
+    manifest.dependencies = splitList($('#deep-dependencies').value);
+    manifest.conflicts = splitList($('#deep-conflicts').value);
+    manifest.helperSupport = {
+      catalog: true,
+      download: true,
+      versionCheck: true,
+      updateNotice: true,
+      automaticInstall: false,
+    };
   }
   return manifest;
 }
@@ -188,6 +199,7 @@ function currentPackage() {
     result.bindings = currentBindings();
   } else {
     result.installGuide = $('#install-guide').value;
+    result.uninstallGuide = $('#uninstall-guide').value;
     result.files = state.deepFiles.map(file => ({ name: file.name, type: file.type, size: file.size, sha256: file.sha256, base64: file.base64 }));
   }
   return result;
@@ -213,7 +225,9 @@ function validationErrors() {
     }
   } else {
     if (!manifest.replaces.length) errors.push('请选择这次会改动的部分。');
+    if (!manifest.baseVersion) errors.push('请填写准确的本体适配版本，供小助手检查兼容性。');
     if (!$('#install-guide').value.trim()) errors.push('请填写给玩家的安装步骤。');
+    if (!$('#uninstall-guide').value.trim()) errors.push('请填写卸载和恢复步骤。');
     if (!state.deepFiles.length) errors.push('请添加至少一个改造文件。');
   }
   return [...new Set(errors)];
@@ -422,12 +436,15 @@ function renderBindingSelector() {
 }
 
 function catalogItemForCondition(condition) {
+  const availableFields = zodCatalog.conditionFields || zodCatalog.fields;
   if (condition.__catalogPath) {
-    const exact = zodCatalog.fields.find(item => item.path.join('.') === condition.__catalogPath.join('.'));
+    const exact = availableFields.find(item => item.path.join('.') === condition.__catalogPath.join('.'))
+      || zodCatalog.fields.find(item => item.path.join('.') === condition.__catalogPath.join('.'));
     if (exact) return exact;
   }
   const actual = condition.path || [];
-  return zodCatalog.fields.find(item => item.path.length === actual.length && item.path.every((segment, index) => /^\{.+\}$/.test(segment) || segment === actual[index]));
+  return availableFields.find(item => item.path.length === actual.length && item.path.every((segment, index) => /^\{.+\}$/.test(segment) || segment === actual[index]))
+    || zodCatalog.fields.find(item => item.path.length === actual.length && item.path.every((segment, index) => /^\{.+\}$/.test(segment) || segment === actual[index]));
 }
 
 function operatorsFor(field) {
@@ -510,9 +527,10 @@ function renderConditions() {
 
 function renderVariablePicker() {
   const search = $('#variable-search').value.trim().toLowerCase();
-  const selectableFields = zodCatalog.fields.filter(item => item.type !== 'record' && item.type !== 'object' && item.type !== 'unknown');
-  $('#catalog-summary').textContent = `已从当前本体 ZOD 读取 ${zodCatalog.fieldCount} 个数据位置；这里只列出适合直接判断的项目。`;
-  const groups = ['全部', ...new Set(selectableFields.map(item => item.group))];
+  const selectableFields = zodCatalog.conditionFields || [];
+  $('#catalog-summary').textContent = `已检查本体 ZOD 的 ${zodCatalog.fieldCount} 个数据位置，并筛出 ${selectableFields.length} 个适合做开关的稳定状态。`;
+  const orderedGroups = zodCatalog.conditionGroupOrder || [...new Set(selectableFields.map(item => item.group))];
+  const groups = ['全部', ...orderedGroups.filter(group => selectableFields.some(item => item.group === group))];
   $('#variable-groups').innerHTML = groups.map(group => `<button class="group-chip ${state.pickerGroup === group ? 'active' : ''}" data-variable-group="${escapeHtml(group)}" type="button">${escapeHtml(group)}</button>`).join('');
   $$('[data-variable-group]').forEach(button => button.addEventListener('click', () => { state.pickerGroup = button.dataset.variableGroup; renderVariablePicker(); }));
   const results = selectableFields.filter(item => {
@@ -521,10 +539,10 @@ function renderVariablePicker() {
     return groupMatch && (!search || haystack.includes(search));
   }).slice(0, 180);
   $('#variable-results').innerHTML = results.length ? results.map((item, index) => `
-    <button class="variable-option" data-variable-index="${zodCatalog.fields.indexOf(item)}" type="button">
+    <button class="variable-option" data-variable-index="${selectableFields.indexOf(item)}" type="button">
       <b>${escapeHtml(item.label)}</b><small>${escapeHtml(item.description || '本体数据项')}</small><em>${escapeHtml(item.type)}${item.dynamic ? ' · 需填名称' : ''}</em>
     </button>`).join('') : '<div class="entry-list empty">没有找到，换个关键词试试。</div>';
-  $$('[data-variable-index]').forEach(button => button.addEventListener('click', () => chooseVariable(zodCatalog.fields[Number(button.dataset.variableIndex)])));
+  $$('[data-variable-index]').forEach(button => button.addEventListener('click', () => chooseVariable(selectableFields[Number(button.dataset.variableIndex)])));
 }
 
 function openVariablePicker(entryId, conditionIndex) {
@@ -611,7 +629,10 @@ function serializeDraft() {
     entries: state.entries,
     bindings: state.bindings,
     installGuide: $('#install-guide').value,
+    uninstallGuide: $('#uninstall-guide').value,
     baseVersion: $('#base-version').value,
+    dependencies: $('#deep-dependencies').value,
+    conflicts: $('#deep-conflicts').value,
     replaces: $$('#replace-options input:checked').map(input => input.value),
     activePanel: state.activePanel,
   };
@@ -661,7 +682,10 @@ function loadDraft(draft) {
   state.bindings = draft.bindings || {};
   state.selectedEntry = state.entries[0]?.__editorId || null;
   $('#install-guide').value = draft.installGuide || '';
+  $('#uninstall-guide').value = draft.uninstallGuide || '';
   $('#base-version').value = draft.baseVersion || manifest.baseVersion || '';
+  $('#deep-dependencies').value = draft.dependencies || (manifest.dependencies || []).join('\n');
+  $('#deep-conflicts').value = draft.conflicts || (manifest.conflicts || []).join('\n');
   const replaces = new Set(draft.replaces || manifest.replaces || []);
   $$('#replace-options input').forEach(input => { input.checked = replaces.has(input.value); });
   refreshKind(); renderEntries(); renderEntryEditor(); renderDeepFiles(); renderValidation();
@@ -684,7 +708,18 @@ function importPackage(pkg) {
     if (tree?.all || tree?.any) bindings[entry.__editorId] = { mode: tree.all ? 'all' : 'any', conditions: structuredClone(tree.all || tree.any) };
     else if (tree) bindings[entry.__editorId] = { mode: 'all', conditions: [structuredClone(tree)] };
   }
-  loadDraft({ manifest: pkg.manifest, entries, bindings, installGuide: pkg.installGuide || '', baseVersion: pkg.manifest.baseVersion, replaces: pkg.manifest.replaces, activePanel: 'basic' });
+  loadDraft({
+    manifest: pkg.manifest,
+    entries,
+    bindings,
+    installGuide: pkg.installGuide || '',
+    uninstallGuide: pkg.uninstallGuide || '',
+    baseVersion: pkg.manifest.baseVersion,
+    dependencies: (pkg.manifest.dependencies || []).join('\n'),
+    conflicts: (pkg.manifest.conflicts || []).join('\n'),
+    replaces: pkg.manifest.replaces,
+    activePanel: 'basic',
+  });
   state.deepFiles = Array.isArray(pkg.files) ? pkg.files : [];
   renderDeepFiles(); markDirty(); toast('作品包已导入，可以继续编辑');
 }
@@ -714,7 +749,7 @@ function updateStepCompletion() {
     basic: Boolean($('#name').value.trim() && $('#id').value.trim() && $('#author').value.trim() && $('#summary').value.trim()),
     worldbook: state.kind === 'deep' || state.entries.length > 0,
     bindings: true,
-    deep: state.kind !== 'deep' || Boolean(state.deepFiles.length && $('#install-guide').value.trim()),
+    deep: state.kind !== 'deep' || Boolean(state.deepFiles.length && $('#base-version').value.trim() && $('#install-guide').value.trim() && $('#uninstall-guide').value.trim()),
     publish: validationErrors().length === 0,
   };
   $$('.step').forEach(button => button.classList.toggle('done', completed[button.dataset.panel]));
@@ -723,8 +758,17 @@ function updateStepCompletion() {
 function refreshKind() {
   $$('.type-card').forEach(card => card.classList.toggle('selected', card.querySelector('input').checked));
   $('.step[data-panel="deep"]').hidden = state.kind !== 'deep';
+  $$('.step.light-only').forEach(step => { step.hidden = state.kind === 'deep'; });
   $('.steps').classList.toggle('compact', state.kind !== 'deep');
-  if (state.activePanel === 'deep' && state.kind !== 'deep') showPanel('publish', false);
+  $('.steps').classList.toggle('deep-flow', state.kind === 'deep');
+  if (state.kind === 'deep') {
+    $('#journey-title').textContent = '完整改造怎么进入工坊？';
+    $('#journey-row').innerHTML = '<div><span>1</span><b>在本地完成改造</b><small>先自行制作并测试文件</small></div><i>→</i><div><span>2</span><b>声明兼容边界</b><small>版本、替换范围和冲突</small></div><i>→</i><div><span>3</span><b>打包供玩家下载</b><small>小助手引导手动安装</small></div>';
+  } else {
+    $('#journey-title').textContent = '轻量扩展怎么工作？';
+    $('#journey-row').innerHTML = '<div><span>1</span><b>写内容</b><small>例如新势力、新事件</small></div><i>→</i><div><span>2</span><b>选出现时机</b><small>例如末世期或下雨时</small></div><i>→</i><div><span>3</span><b>导出投稿</b><small>玩家一键安装</small></div>';
+  }
+  if (!visibleStepNames().includes(state.activePanel)) showPanel('kind', false);
   updateStepCompletion();
 }
 
@@ -777,7 +821,8 @@ $('#binding-mode').addEventListener('change', event => { if (state.selectedEntry
 $('#add-condition').addEventListener('click', () => {
   const entryId = $('#binding-entry').value;
   if (!entryId) { toast('先去编写一个世界书条目'); return; }
-  const preferred = zodCatalog.fields.find(item => item.path.join('.') === '世界阶段') || zodCatalog.fields[0];
+  const availableFields = zodCatalog.conditionFields || zodCatalog.fields;
+  const preferred = availableFields.find(item => item.path.join('.') === '世界阶段') || availableFields[0];
   const condition = { path: [...preferred.path], __catalogPath: [...preferred.path], operator: operatorsFor(preferred)[0], value: preferred.options?.[0] ?? '' };
   bindingFor(entryId).conditions.push(condition);
   const index = bindingFor(entryId).conditions.length - 1;
@@ -821,7 +866,7 @@ $('#package-import').addEventListener('change', async event => {
   event.target.value = '';
 });
 
-for (const id of ['name','id','version','author','summary','base-version','install-guide']) {
+for (const id of ['name','id','version','author','summary','base-version','install-guide','uninstall-guide','deep-dependencies','deep-conflicts']) {
   $(`#${id}`).addEventListener('input', () => updateStepCompletion());
 }
 

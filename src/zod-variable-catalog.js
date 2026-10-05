@@ -2,8 +2,1032 @@
 export default {
   "generatedFrom": "缄默之秋3.0/MVU变量/ZOD.js",
   "sourceSha256": "67526c7622287ce716217e335b19bc46f730508c47f13d378d3945b2055475fd",
-  "generatedAt": "2026-10-05T05:52:45.527Z",
+  "generatedAt": "2026-10-05T06:27:22.940Z",
   "fieldCount": 340,
+  "conditionFieldCount": 76,
+  "conditionGroupOrder": [
+    "剧情进度",
+    "模式与开关",
+    "生存状态",
+    "角色属性",
+    "身份与名声",
+    "时间与环境",
+    "营地",
+    "制造与研究",
+    "特殊玩法"
+  ],
+  "conditionFields": [
+    {
+      "path": [
+        "超事件",
+        "进展"
+      ],
+      "label": "超事件进展",
+      "group": "剧情进度",
+      "description": "超事件整体进展；仅由剧情实际推进，0~100",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "超事件 › 进展"
+    },
+    {
+      "path": [
+        "超事件",
+        "已解决"
+      ],
+      "label": "超事件是否解决",
+      "group": "剧情进度",
+      "description": "正文明确完成解决条件后才设为true",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "超事件 › 已解决"
+    },
+    {
+      "path": [
+        "超事件",
+        "事件ID"
+      ],
+      "label": "当前超事件",
+      "group": "剧情进度",
+      "description": "",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "超事件 › 事件ID"
+    },
+    {
+      "path": [
+        "当前活动"
+      ],
+      "label": "当前正在结算的活动",
+      "group": "剧情进度",
+      "description": "当前真正参与结算的机制标签；每轮按正文整体replace此短数组",
+      "dynamic": false,
+      "type": "array",
+      "sourceLabel": "当前活动"
+    },
+    {
+      "path": [
+        "世界阶段"
+      ],
+      "label": "世界阶段",
+      "group": "剧情进度",
+      "description": "世界阶段：秩序期=8月24日12:00前，爆发期=8月24日12:00~8月26日12:00，末世期=8月26日12:00后",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "秩序期",
+        "爆发期",
+        "末世期"
+      ],
+      "sourceLabel": "世界阶段"
+    },
+    {
+      "path": [
+        "感染者行为模式"
+      ],
+      "label": "感染者行为模式",
+      "group": "模式与开关",
+      "description": "感染者行为模式：普通型=保留部分本能可诱导，狂病型=完全丧失理智极度攻击性",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "普通型",
+        "狂病型"
+      ],
+      "sourceLabel": "感染者行为模式"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "暗线主角"
+      ],
+      "label": "是否启用暗线主角",
+      "group": "模式与开关",
+      "description": "启用约修亚与林青的可选暗线内容",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "扩展内容 › 暗线主角"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "超事件"
+      ],
+      "label": "是否启用超事件",
+      "group": "模式与开关",
+      "description": "启用当前国籍的末世期互斥超事件",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "扩展内容 › 超事件"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "瑟瑟加强"
+      ],
+      "label": "是否启用瑟瑟加强",
+      "group": "模式与开关",
+      "description": "启用仅限成年角色的生理、孕产、战败捕获等扩展条目",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "扩展内容 › 瑟瑟加强"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "业火归途"
+      ],
+      "label": "是否启用业火归途",
+      "group": "模式与开关",
+      "description": "启用业火归途叙事与机制条目",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "扩展内容 › 业火归途"
+    },
+    {
+      "path": [
+        "扩展内容",
+        "质形重构"
+      ],
+      "label": "是否启用质形重构",
+      "group": "模式与开关",
+      "description": "启用质形重构（分解异能）金手指：亚空间材料、图谱库与属性增幅；默认关闭，需在创角页或变量中显式开启",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "扩展内容 › 质形重构"
+    },
+    {
+      "path": [
+        "无定义角色模式"
+      ],
+      "label": "是否使用无定义角色模式",
+      "group": "模式与开关",
+      "description": "开启后不启用世界书中的预定义人物详情与各国已定义NPC摘要；人物由剧情按需创建",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "无定义角色模式"
+    },
+    {
+      "path": [
+        "叙事模式"
+      ],
+      "label": "叙事难度或契约模式",
+      "group": "模式与开关",
+      "description": "创角确定的长期叙事难度与契约模式；仅由用户明确切换",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "爽文",
+        "正常",
+        "困难",
+        "地狱",
+        "魅魔契约"
+      ],
+      "sourceLabel": "叙事模式"
+    },
+    {
+      "path": [
+        "NPC行为模式"
+      ],
+      "label": "NPC行为模式",
+      "group": "模式与开关",
+      "description": "NPC行为模式：正常型=大部分NPC有善恶之分，全员恶人型=几乎所有NPC都自私残忍不可信",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "正常型",
+        "全员恶人型"
+      ],
+      "sourceLabel": "NPC行为模式"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hunger_current"
+      ],
+      "label": "当前饱食度",
+      "group": "生存状态",
+      "description": "当前饱食度",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › hunger_current"
+    },
+    {
+      "path": [
+        "核心状态",
+        "thirst_current"
+      ],
+      "label": "当前饱水度",
+      "group": "生存状态",
+      "description": "当前饱水度",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › thirst_current"
+    },
+    {
+      "path": [
+        "核心状态",
+        "infection_current"
+      ],
+      "label": "当前感染值",
+      "group": "生存状态",
+      "description": "当前感染值，≥60危险",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › infection_current"
+    },
+    {
+      "path": [
+        "核心状态",
+        "morale_current"
+      ],
+      "label": "当前情绪值",
+      "group": "生存状态",
+      "description": "当前情绪值",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › morale_current"
+    },
+    {
+      "path": [
+        "核心状态",
+        "hp_current"
+      ],
+      "label": "当前生命值",
+      "group": "生存状态",
+      "description": "当前生命值",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › hp_current"
+    },
+    {
+      "path": [
+        "核心状态",
+        "stamina_current"
+      ],
+      "label": "当前体力",
+      "group": "生存状态",
+      "description": "当前体力值",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "核心状态 › stamina_current"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "P"
+      ],
+      "label": "感知 P",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › P"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "S"
+      ],
+      "label": "力量 S",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › S"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "C"
+      ],
+      "label": "魅力 C",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › C"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "A"
+      ],
+      "label": "敏捷 A",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › A"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "E"
+      ],
+      "label": "耐力 E",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › E"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "L"
+      ],
+      "label": "运气 L",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › L"
+    },
+    {
+      "path": [
+        "SPECIAL",
+        "I"
+      ],
+      "label": "智力 I",
+      "group": "角色属性",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "SPECIAL › I"
+    },
+    {
+      "path": [
+        "特质",
+        "负面"
+      ],
+      "label": "负面特质中包含",
+      "group": "身份与名声",
+      "description": "负面特质列表",
+      "dynamic": false,
+      "type": "array",
+      "sourceLabel": "特质 › 负面"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "nationality"
+      ],
+      "label": "国籍",
+      "group": "身份与名声",
+      "description": "国籍，影响出生点",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "华国",
+        "美利坚国",
+        "法国",
+        "大毛国",
+        "日本国",
+        "巴西国",
+        "北非",
+        "其他"
+      ],
+      "sourceLabel": "衍生状态 › nationality"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "reputation"
+      ],
+      "label": "名声",
+      "group": "身份与名声",
+      "description": "名声等级",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "遗臭万年",
+        "劣迹斑斑",
+        "默默无闻",
+        "声誉鹊起",
+        "青史留名"
+      ],
+      "sourceLabel": "衍生状态 › reputation"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "camp"
+      ],
+      "label": "所属营地",
+      "group": "身份与名声",
+      "description": "所属营地",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "衍生状态 › camp"
+    },
+    {
+      "path": [
+        "衍生状态",
+        "bmi"
+      ],
+      "label": "体型",
+      "group": "身份与名声",
+      "description": "BMI体型等级",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "过瘦",
+        "较瘦",
+        "标准",
+        "较胖",
+        "过胖"
+      ],
+      "sourceLabel": "衍生状态 › bmi"
+    },
+    {
+      "path": [
+        "特质",
+        "正面"
+      ],
+      "label": "正面特质中包含",
+      "group": "身份与名声",
+      "description": "正面特质列表",
+      "dynamic": false,
+      "type": "array",
+      "sourceLabel": "特质 › 正面"
+    },
+    {
+      "path": [
+        "特质",
+        "中性"
+      ],
+      "label": "中性特质中包含",
+      "group": "身份与名声",
+      "description": "中性特质列表",
+      "dynamic": false,
+      "type": "array",
+      "sourceLabel": "特质 › 中性"
+    },
+    {
+      "path": [
+        "特质",
+        "自定义"
+      ],
+      "label": "自定义特质中包含",
+      "group": "身份与名声",
+      "description": "自定义特质列表",
+      "dynamic": false,
+      "type": "array",
+      "sourceLabel": "特质 › 自定义"
+    },
+    {
+      "path": [
+        "环境",
+        "location"
+      ],
+      "label": "当前地点",
+      "group": "时间与环境",
+      "description": "当前地点",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "环境 › location"
+    },
+    {
+      "path": [
+        "环境",
+        "时间"
+      ],
+      "label": "当前时间",
+      "group": "时间与环境",
+      "description": "当前游戏内时间",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "环境 › 时间"
+    },
+    {
+      "path": [
+        "环境",
+        "天气"
+      ],
+      "label": "当前天气",
+      "group": "时间与环境",
+      "description": "当前天气状况",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "环境 › 天气"
+    },
+    {
+      "path": [
+        "环境",
+        "radiation"
+      ],
+      "label": "辐射指数",
+      "group": "时间与环境",
+      "description": "辐射指数0-100，≥20警告≥50危险",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "环境 › radiation"
+    },
+    {
+      "path": [
+        "环境",
+        "comfort"
+      ],
+      "label": "环境舒适度",
+      "group": "时间与环境",
+      "description": "休息环境舒适度0-100",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "环境 › comfort"
+    },
+    {
+      "path": [
+        "环境",
+        "hatred"
+      ],
+      "label": "世界仇恨值",
+      "group": "时间与环境",
+      "description": "世界仇恨值0-100",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "环境 › hatred"
+    },
+    {
+      "path": [
+        "环境",
+        "threat_level"
+      ],
+      "label": "威胁等级",
+      "group": "时间与环境",
+      "description": "威胁等级评估",
+      "dynamic": false,
+      "type": "string",
+      "sourceLabel": "环境 › threat_level"
+    },
+    {
+      "path": [
+        "营地",
+        "可访问"
+      ],
+      "label": "当前是否能使用营地",
+      "group": "营地",
+      "description": "角色当前是否能实际接触营地设施和库存",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "营地 › 可访问"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "工具零件"
+      ],
+      "label": "工具零件资源",
+      "group": "营地",
+      "description": "工具类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 工具零件"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "护甲衣物"
+      ],
+      "label": "护甲衣物资源",
+      "group": "营地",
+      "description": "护甲类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 护甲衣物"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "建筑材料"
+      ],
+      "label": "建筑材料资源",
+      "group": "营地",
+      "description": "建材类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 建筑材料"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "燃料能源"
+      ],
+      "label": "燃料能源资源",
+      "group": "营地",
+      "description": "燃料类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 燃料能源"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "食物与水"
+      ],
+      "label": "食物与水资源",
+      "group": "营地",
+      "description": "食物类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 食物与水"
+    },
+    {
+      "path": [
+        "营地",
+        "已建立"
+      ],
+      "label": "是否已经建立营地",
+      "group": "营地",
+      "description": "营地是否真实存在；前端不得从空对象或名称自行猜测",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "营地 › 已建立"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "武器弹药"
+      ],
+      "label": "武器弹药资源",
+      "group": "营地",
+      "description": "武器类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 武器弹药"
+    },
+    {
+      "path": [
+        "营地",
+        "资源",
+        "医疗药品"
+      ],
+      "label": "医疗药品资源",
+      "group": "营地",
+      "description": "医疗类资源池，无硬上限",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 资源 › 医疗药品"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "床位"
+      ],
+      "label": "营地床位",
+      "group": "营地",
+      "description": "当前可安全使用的居住床位",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 床位"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "方针"
+      ],
+      "label": "营地方针",
+      "group": "营地",
+      "description": "营地长期经营取向；改变收益结构，也会产生相应代价",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "均衡",
+        "保守",
+        "扩张",
+        "军管",
+        "生产优先",
+        "生存优先"
+      ],
+      "sourceLabel": "营地 › 经营 › 方针"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "警戒"
+      ],
+      "label": "营地警戒",
+      "group": "营地",
+      "description": "当前警戒投入；影响防御、劳动力和疲劳",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "低",
+        "中",
+        "高",
+        "封锁"
+      ],
+      "sourceLabel": "营地 › 经营 › 警戒"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "可用劳动力"
+      ],
+      "label": "营地可用劳动力",
+      "group": "营地",
+      "description": "未被伤病、警戒或既有任务占用、可立即调度的人数",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 可用劳动力"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "连续稳定天数"
+      ],
+      "label": "营地连续稳定天数",
+      "group": "营地",
+      "description": "完整经营日结算后仍无短缺、失控或重大中断的连续天数",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 连续稳定天数"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "配给"
+      ],
+      "label": "营地配给",
+      "group": "营地",
+      "description": "生活物资配给强度；影响消耗、士气与健康",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "宽松",
+        "标准",
+        "节省",
+        "紧急"
+      ],
+      "sourceLabel": "营地 › 经营 › 配给"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "燃料日净值"
+      ],
+      "label": "营地燃料日净值",
+      "group": "营地",
+      "description": "一个完整经营日内燃料能源的预计收入减支出",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 燃料日净值"
+    },
+    {
+      "path": [
+        "营地",
+        "人数"
+      ],
+      "label": "营地人数",
+      "group": "营地",
+      "description": "营地人数",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 人数"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "生产重点"
+      ],
+      "label": "营地生产重点",
+      "group": "营地",
+      "description": "当前唯一优先生产方向；其他生产维持常规或让位",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "食物与水",
+        "医疗药品",
+        "建筑材料",
+        "武器弹药",
+        "燃料能源",
+        "工具零件",
+        "休整"
+      ],
+      "sourceLabel": "营地 › 经营 › 生产重点"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "食水日净值"
+      ],
+      "label": "营地食水日净值",
+      "group": "营地",
+      "description": "一个完整经营日内食物与水的预计收入减支出",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 食水日净值"
+    },
+    {
+      "path": [
+        "营地",
+        "士气"
+      ],
+      "label": "营地士气",
+      "group": "营地",
+      "description": "营地士气0-100",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 士气"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "维护压力"
+      ],
+      "label": "营地维护压力",
+      "group": "营地",
+      "description": "设施失修、备件短缺与积压工作的综合压力",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 维护压力"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "稳定度"
+      ],
+      "label": "营地稳定度",
+      "group": "营地",
+      "description": "供需、组织、防御和内部秩序的综合稳定度",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 稳定度"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "医疗日净值"
+      ],
+      "label": "营地医疗日净值",
+      "group": "营地",
+      "description": "一个完整经营日内医疗药品的预计收入减支出",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 医疗日净值"
+    },
+    {
+      "path": [
+        "营地",
+        "经营",
+        "噪音风险"
+      ],
+      "label": "营地噪音风险",
+      "group": "营地",
+      "description": "发电、施工、人口与活动造成的暴露风险",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "营地 › 经营 › 噪音风险"
+    },
+    {
+      "path": [
+        "可制造",
+        "科技树进度"
+      ],
+      "label": "科技树总体进度",
+      "group": "制造与研究",
+      "description": "科技节点总体掌握比例0-100；保留已有值，不由正文更新",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "可制造 › 科技树进度"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "P"
+      ],
+      "label": "感知 P是否已永久增幅",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 永久增幅记录 › P"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "S"
+      ],
+      "label": "力量 S是否已永久增幅",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 永久增幅记录 › S"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "A"
+      ],
+      "label": "敏捷 A是否已永久增幅",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 永久增幅记录 › A"
+    },
+    {
+      "path": [
+        "业火记录",
+        "默示录接触度"
+      ],
+      "label": "默示录接触度",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "业火记录 › 默示录接触度"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "E"
+      ],
+      "label": "耐力 E是否已永久增幅",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 永久增幅记录 › E"
+    },
+    {
+      "path": [
+        "业火记录",
+        "杀戮压力"
+      ],
+      "label": "杀戮压力",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "number",
+      "sourceLabel": "业火记录 › 杀戮压力"
+    },
+    {
+      "path": [
+        "业火记录",
+        "路线阶段"
+      ],
+      "label": "业火归途路线阶段",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "enum",
+      "options": [
+        "未开始",
+        "已启用",
+        "进行中",
+        "已完成"
+      ],
+      "sourceLabel": "业火记录 › 路线阶段"
+    },
+    {
+      "path": [
+        "金手指",
+        "已觉醒"
+      ],
+      "label": "质形重构是否觉醒",
+      "group": "特殊玩法",
+      "description": "质形重构是否已觉醒；由创角页或剧情开启",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 已觉醒"
+    },
+    {
+      "path": [
+        "金手指",
+        "永久增幅记录",
+        "I"
+      ],
+      "label": "智力 I是否已永久增幅",
+      "group": "特殊玩法",
+      "description": "",
+      "dynamic": false,
+      "type": "boolean",
+      "sourceLabel": "金手指 › 永久增幅记录 › I"
+    }
+  ],
   "fields": [
     {
       "path": [

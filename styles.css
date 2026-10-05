@@ -38,6 +38,7 @@ h1 { margin: 0; font-size: clamp(30px, 4vw, 52px); letter-spacing: .03em; }
 .workspace { max-width: 1480px; margin: 0 auto; padding: 0 34px 72px; }
 .steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; padding: 1px; background: var(--line); border: 1px solid var(--line); position: sticky; top: 0; z-index: 10; box-shadow: 0 10px 25px rgba(0,0,0,.2); }
 .steps.compact { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.steps.deep-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .step { min-width: 0; border: 0; background: #0d1113; color: var(--muted); padding: 13px 14px; display: flex; align-items: center; gap: 11px; cursor: pointer; text-align: left; }
 .step b { flex: 0 0 auto; display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #465055; border-radius: 50%; color: #7d878a; font: 700 11px/1 monospace; }
 .step span { min-width: 0; font-size: 13px; font-weight: 700; }
@@ -148,6 +149,10 @@ legend { color: var(--gold); padding: 0 8px; }
 .check-grid label { display: flex; align-items: center; gap: 8px; }
 .check-grid input { width: auto; }
 .file-button { margin-top: 18px; width: fit-content; }
+.boundary-card { margin-bottom: 20px; padding: 18px; border: 1px solid #4a3a2d; border-left: 3px solid var(--gold); background: rgba(216,175,86,.07); display: grid; grid-template-columns: 170px 1fr; gap: 10px 16px; line-height: 1.65; }
+.boundary-card b { color: var(--gold); }
+.boundary-card span { color: #b8bfbd; }
+.archive-note { margin: 18px 0 0; padding: 12px 14px; border-left: 3px solid var(--blue); background: var(--blue-soft); color: #b8c9d8; line-height: 1.65; font-size: 13px; }
 .file-list { margin-top: 12px; border: 1px solid var(--line); min-height: 90px; }
 .file-item { padding: 11px 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; }
 .validation { border: 1px solid var(--line); padding: 20px; margin-bottom: 18px; line-height: 1.7; white-space: pre-line; }
@@ -195,6 +200,7 @@ code { color: var(--gold); }
   .journey-row, .condition-explainer { grid-template-columns: 1fr; }
   .journey-row > i, .condition-explainer > i { transform: rotate(90deg); justify-self: center; }
   .check-grid { grid-template-columns: 1fr; }
+  .boundary-card { grid-template-columns: 1fr; }
   .wizard-nav { grid-template-columns: auto auto; }
   .wizard-nav > span { display: none; }
   .split-view aside { min-height: 180px; }

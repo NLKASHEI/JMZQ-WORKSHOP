@@ -12,6 +12,7 @@
     "worldbook": { "type": "array", "items": { "type": "object" } },
     "bindings": { "$ref": "bindings.schema.json" },
     "installGuide": { "type": "string" },
+    "uninstallGuide": { "type": "string" },
     "files": {
       "type": "array",
       "items": {
@@ -28,4 +29,3 @@
     }
   }
 }
-

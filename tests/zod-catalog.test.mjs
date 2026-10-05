@@ -19,3 +19,16 @@ test('动态记录使用可替换的中文占位位置', () => {
   assert.ok(dynamicField);
   assert.ok(dynamicField.path.every(segment => typeof segment === 'string'));
 });
+
+test('变量选择器只提供适合逻辑判断的稳定状态', () => {
+  assert.ok(catalog.conditionFieldCount > 40);
+  assert.ok(catalog.conditionFieldCount < catalog.fieldCount / 2);
+  const paths = new Set(catalog.conditionFields.map(field => field.path.join('.')));
+  assert.ok(paths.has('世界阶段'));
+  assert.ok(paths.has('核心状态.hp_current'));
+  assert.ok(paths.has('营地.已建立'));
+  assert.ok(!paths.has('队友.{队友名}.thoughts'));
+  assert.ok(!paths.has('队友.{队友名}.detail'));
+  assert.ok(!paths.has('衍生状态.mental_status'));
+  assert.ok(catalog.conditionFields.every(field => !field.dynamic));
+});
