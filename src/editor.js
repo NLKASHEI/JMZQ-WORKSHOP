@@ -72,7 +72,7 @@ function defaultEntry() {
     key: [], keysecondary: [], comment: `新条目 ${state.entries.length + 1}`, content: '',
     constant: false, vectorized: false, selective: true, selectiveLogic: 0, addMemo: true,
     order: 100, position: 1, disable: true, enabled: false,
-    ignoreBudget: false, excludeRecursion: false, preventRecursion: false, delayUntilRecursion: false,
+    ignoreBudget: false, excludeRecursion: true, preventRecursion: true, delayUntilRecursion: false,
     matchPersonaDescription: false, matchCharacterDescription: false, matchCharacterPersonality: false,
     matchCharacterDepthPrompt: false, matchScenario: false, matchCreatorNotes: false,
     probability: 100, useProbability: true, depth: 4, outletName: '', group: '', groupOverride: false,
